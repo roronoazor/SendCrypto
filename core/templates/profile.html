@@ -1,0 +1,292 @@
+{% extends 'dashboard_base.html' %}
+{% block content %}
+<div class="dashboard-hero-content text-white">
+  <h3 class="title">My Account</h3>
+  <ul class="breadcrumb">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li>My Account</li>
+  </ul>
+  <div class="card card-body w-25 p-2">
+    <h6 class="col-green" style="margin-top: 1px">
+      <i class="fa fa-briefcase mr-2"></i> Normal Mode
+    </h6>
+  </div>
+</div>
+</div>
+<div class="container-fluid">
+<div class="mt--85">
+  <div class="row">
+    <div class="col-12">
+      <div class="card card-success mb-4">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="text-center">
+                <img
+                  src="https://www.gencapitals.com/auth/img/avatar/avatar-1.png"
+                  alt="ace king"
+                  width="100px"
+                  class="rounded-circle"
+                />
+                <form
+                  method="PUT"
+                  action="{% url 'profile' %}"
+                  enctype="multipart/form-data"
+                >
+                  {% csrf_token %} 
+                  <input
+                    type="hidden"
+                    name="_token"
+                    value="0rRjJCfiIKc1qwlxGcqMT9XS6N4C4cCPK1zX2550"
+                  />
+                  <div class="form-group">
+                    <label style="font-size: 14px" class="font-bold"
+                      >Upload Passport</label
+                    >
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <button
+                          class="btn btn-primary"
+                          type="submit"
+                          style="
+                            font-size: 14px;
+                            height: 43px;
+                            background: #1b334d !important;
+                          "
+                        >
+                          <i class="fa fa-file-upload mr-1"></i>
+                          Upload
+                        </button>
+                      </div>
+                      <div class="custom-file overflow-hidden">
+                        <input
+                          id="customFile"
+                          type="file"
+                          class="custom-file-input"
+                          name="avatar"
+                          accept="image/jpeg"
+                          required
+                        />
+                        <label
+                          for="customFile"
+                          style="font-size: 14px"
+                          class="custom-file-label"
+                          >Choose file</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-sm-8" id="referrals">
+              <div class="list-group list-group-flush">
+                <a
+                  class="list-group-item list-group-item-action flex-column align-items-start"
+                >
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1" style="font-size: 14px">
+                      Referral Link:
+                    </h5>
+                  </div>
+                  <h4
+                    class="mb-1 text-muted"
+                    style="font-size: 14px"
+                    id="referral_link"
+                  >
+                    {{ referral_link }}
+                  </h4>
+                  <button
+                    class="btn btn-dark btn-sm mb-2"
+                    data-clipboard-target="#referral_link"
+                    id="button1"
+                  >
+                    <i class="fa fa-copy mr-2"></i> Copy Referral
+                    Link
+                  </button>
+                  <h4 class="text-muted" style="font-size: 14px">
+                    Referral Code: <b>{{ referral_code }}</b>
+                  </h4>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      {% include 'styled_messages.html' %} 
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <form
+            method="post"
+            action="{% url 'profile' %}"
+          >
+            <input
+              type="hidden"
+              name="_token"
+              value="0rRjJCfiIKc1qwlxGcqMT9XS6N4C4cCPK1zX2550"
+            />
+            {% csrf_token %}
+            <div class="form-group">
+              <label>Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                placeholder="Account Name"
+                value="{{ name }}"
+                required
+              />
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Your Country</label>                
+                  <select
+                    name="country"
+                    class="wide"
+                    autocomplete="country"
+                    required
+                  >
+                    <option value="">Select a country…</option>
+                    {% for country_code, country_name in countries %}
+                      <option value="{{ country_code }}" {% if country_code == country %}selected{% endif %}>
+                        {{ country_name }} ({{ country_code }})
+                      </option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="phone"
+                    placeholder="Phone Number"
+                    value={{ phone }}
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Email Address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    placeholder="Email Address"
+                    value="{{ email }}"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="username"
+                    placeholder="Username"
+                    value="{{ username }}"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-dark w-auto">
+              <i class="fas fa-save mr-2"></i> Update Account
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card card-body">
+        <form
+          action="{% url 'change_password' %}"
+          method="post"
+        >
+          <input
+            type="hidden"
+            name="_token"
+            value="0rRjJCfiIKc1qwlxGcqMT9XS6N4C4cCPK1zX2550"
+          />
+          {% csrf_token %}
+          <div class="form-group">
+            <label>Old Password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="old_password"
+              value=""
+              required
+            />
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="password" class="d-block"
+                  >New Password</label
+                >
+                <input
+                  id="password"
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="password2" class="d-block"
+                  >Password Confirmation</label
+                >
+                <input
+                  id="password2"
+                  type="password"
+                  class="form-control"
+                  name="password_confirmation"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-danger w-auto">
+              <i class="fas fa-lock mr-2"></i> Change Password
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid sticky-bottom">
+  <div class="dashboard-footer">
+    <div
+      class="d-flex flex-wrap justify-content-between m-0-15-none"
+    >
+      <div class="left">
+        &copy; 2023
+        <a href="{% url 'home' %}">CoinTrack Advisors</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

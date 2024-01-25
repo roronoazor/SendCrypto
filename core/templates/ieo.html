@@ -1,0 +1,124 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="back-wrapper">
+  <div class="back-wrapper-inner">
+    <!-- Back Breadcrumbs Start Here -->
+    <div class="back-breadcrumbs">
+      <div class="breadcrumbs-wrap">
+        <img
+          class="desktop"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <img
+          class="mobile"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner-mobile.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <div class="breadcrumbs-inner">
+          <div class="container">
+            <div class="breadcrumbs-text">
+              <h1 class="breadcrumbs-title">Initial Exchange Offering</h1>
+              <div class="back-nav">
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li>IEO</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Back Breadcrumbs End Here -->
+
+    <!-- Start Blog here -->
+    <div id="back-blog" class="back-blog-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="blog-single-inner">
+              <div class="blog-content">
+                <div
+                  style="display: flex; justify-content: center"
+                  class="blog-image"
+                >
+                  <img src="{% static 'assets2/images/ieo.jpg' %}" alt="" />
+                </div>
+
+                <h4 style="text-align: center">
+                  DeFi is short for “decentralized finance,” an umbrella term
+                  for a variety of financial applications in cryptocurrency or
+                  blockchain geared toward disrupting financial intermediaries.
+                </h4>
+
+                <p>
+                  DeFi draws inspiration from
+                  <a
+                    href="https://www.coindesk.com/learn/blockchain-101/what-is-blockchain-technology"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >blockchain,</a
+                  >
+                  the technology behind the digital currency
+                  <a
+                    href="https://www.coindesk.com/learn/bitcoin-101/what-is-bitcoin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >bitcoin,</a
+                  >
+                  which allows several entities to hold a copy of a history of
+                  transactions, meaning it isn’t controlled by a single, central
+                  source. That’s important because centralized systems and human
+                  gatekeepers can limit the speed and sophistication of
+                  transactions while offering users less direct control over
+                  their money. DeFi is distinct because it expands the use of
+                  blockchain from simple value transfer to more complex
+                  financial use cases.
+                </p>
+
+                <h3 style="text-align: center">Ethereum applications</h3>
+
+                <p>
+                  Most applications that call themselves “DeFi” are built on top
+                  of
+                  <a
+                    href="https://www.coindesk.com/learn/ethereum-101/what-is-ethereum"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Ethereum,</a
+                  >
+                  the world’s second-largest cryptocurrency platform, which sets
+                  itself apart from the Bitcoin platform in that it’s easier to
+                  use to build other types of decentralized applications beyond
+                  simple transactions. These more complex financial use cases
+                  were even highlighted by Ethereum creator
+                  <a
+                    href="https://www.coindesk.com/people/vitalik-buterin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Vitalik Buterin</a
+                  >
+                  back in 2013 in the original
+                  <a
+                    href="https://ethereum.org/en/whitepaper/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Ethereum white paper.</a
+                  >
+                </p>
+                <p>
+                  With up to 10 BTC deposited into this portfolio, investors are
+                  projected to receive a minimum of 500% ROI after 7 months of
+                  trades when they invest in this portfolio. There is also a 10%
+                  referral bonus for our clients.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

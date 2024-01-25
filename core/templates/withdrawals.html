@@ -1,0 +1,216 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard-hero-content text-white">
+  <h3 class="title">My Withdrawals</h3>
+  <ul class="breadcrumb">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li>My Withdrawals</li>
+  </ul>
+  <div class="card card-body w-25 p-2">
+    <h6 class="col-green" style="margin-top: 1px">
+      <i class="fa fa-briefcase mr-2"></i> Normal Mode
+    </h6>
+  </div>
+</div>
+</div>
+<div class="container-fluid">
+<div class="mt--85">
+  <div class="row justify-content-center mt--85">
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Total Withdrawals</span>
+            <h5 class="amount">{{ total_withdrawals|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Approved Withdrawals</span>
+            <h5 class="amount">{{ approved_withdrawals|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Pending Withdrawals</span>
+            <h5 class="amount">{{ pending_withdrawals|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Account Balance</span>
+            <h5 class="amount">{{  balance|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <div class="card-body">
+      <form
+        method="post"
+        action="{% url 'withdrawals' %}"
+      >
+        <input
+          type="hidden"
+          name="_token"
+          value="0rRjJCfiIKc1qwlxGcqMT9XS6N4C4cCPK1zX2550"
+        />
+        {% csrf_token %} 
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="d-block"
+                >Enter Withdrawal Amount:
+                <span class="float-right font-20"
+                  >Current Balance: &#xa3;{{ balance|floatformat:"2g" }}</span
+                ></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                name="amount"
+                value=""
+                placeholder="Type withdrawal amount"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Choose Currency</label>
+              <select
+                name="source"
+                class="form-control wide"
+                required
+              >
+                <option value="">- Select -</option>
+                <option value="bitcoin">Bitcoin BTC</option>
+                <option value="ethereum_classic">
+                  Ethereum Classic ETC
+                </option>
+                <option value="ethereum">Ethereum ETH</option>
+                <option value="litecoin">Litecoin LTC</option>
+                <option value="usdt">USDT USDT</option>
+                <option value="xrp">Ripple Coin XRP</option>
+                <option value="doge">Dogecoin DOGE</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Withdrawal Details</label>
+          <textarea
+            class="form-control"
+            name="description"
+            placeholder="Wallet address or account details"
+            required
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary w-auto"
+          style="background: #1b334d !important"
+        >
+          <i class="fas fa-wallet mr-2"></i> Withdraw Funds
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="card card-dark">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>Invoice ID</th>
+              <th>Amount</th>
+              <th>Source</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Date Requested</th>
+              <th>Date Paid</th>
+            </tr>
+            {% for withdrawal in withdrawals %}
+            <tr>
+              <td><a href="#">{{ withdrawal.invoice_id }}</a></td>
+              <td class="font-weight-600">&#xa3; {{ withdrawal.withdrawal_amount|floatformat:"2g" }}</td>
+              <td>{{ withdrawal.source }}</td>
+              <td>{{ withdrawal.withdrawal_details }}</td>
+              {% if withdrawal.status == "pending" %}
+                <td><div class="badge badge-warning">{{ withdrawal.status }}</div></td>
+              {% elif withdrawal.status == "approved" %}
+                <td><div class="badge badge-success">{{ withdrawal.status }}</div></td>
+              {% elif withdrawal.status == "paid" %}
+                <td><div class="badge badge-success">{{ withdrawal.status }}</div></td>
+              {% elif withdrawal.status == "unpaid" %}
+                <td><div class="badge badge-warning">{{ withdrawal.status }}</div></td>
+              {% elif withdrawal.status == "rejected" %}
+              <td><div class="badge badge-danger">{{ withdrawal.status }}</div></td>
+              {% endif %}
+              <td>{{ withdrawal.date_requested|default:'' }}</td>
+              <td>{{ withdrawal.date_paid|default:'' }}</td>
+          </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid sticky-bottom">
+  <div class="dashboard-footer">
+    <div
+      class="d-flex flex-wrap justify-content-between m-0-15-none"
+    >
+      <div class="left">
+        &copy; 2023
+        <a href="{% url 'home' %}">CoinTrack Advisors</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

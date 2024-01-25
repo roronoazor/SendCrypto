@@ -1,0 +1,23 @@
+{% if messages %}
+<ul class="list-group list-group-flush mb-10">
+  {% for message in messages %} {% if message.tags == "info" %}
+  <li class="list-group-item list-group-item-primary">
+    <i class="fa fa-info-circle mt-1 m-r-2"></i> {{ message }}
+  </li>
+  {% elif message.tags == "success" %}
+  <li class="list-group-item list-group-item-success">
+    <i class="fas fa-check-circle mt-1 m-r-2"></i> {{ message }}
+  </li>
+  {% elif message.tags == "warning" %}
+  <li class="list-group-item list-group-item-warning">
+    <i class="fas fa-exclamation-triangle mt-1 m-r-2"></i> {{ message }}
+  </li>
+  {% elif message.tags == "error" %}
+  <li class="list-group-item list-group-item-danger">
+    <i class="fas fa-exclamation-circle mt-1 m-r-2"></i> {{ message }}
+  </li>
+  {% else %}
+  <li class="list-group-item list-group-item-secondary">{{ message }}</li>
+  {% endif %} {% endfor %}
+</ul>
+{% endif %}

@@ -1,0 +1,42 @@
+DEPOSIT_PLANS = {
+    "18f872b9-d044-43da-8e03-061af276": {
+        "plan_name": "Erc 20",
+        "percent": "1.92",
+        "min": "1000000",
+        "max": "1000000",
+        "duration": "365",
+        "plan_id": "18f872b9-d044-43da-8e03-061af276",
+    },
+    "9e010e02-1a5a-4084-9c32-1a4708cf": {
+        "plan_name": "Ieo",
+        "percent": "2.38",
+        "min": "217000",
+        "max": "10850000",
+        "duration": "210",
+        "plan_id": "9e010e02-1a5a-4084-9c32-1a4708cf",
+    },
+    "cebd0ec6-c724-4ad2-9aa3-17c2dc9c": {
+        "plan_name": "Premium Plan",
+        "percent": "1.36",
+        "min": "2000000",
+        "max": "5000000",
+        "duration": "365",
+        "plan_id": "cebd0ec6-c724-4ad2-9aa3-17c2dc9c",
+    },
+    "741ee54f-85e1-46e1-901b-29299748": {
+        "plan_name": "Nfp Plan",
+        "percent": "1.10",
+        "min": "100000",
+        "max": "1900000",
+        "duration": "30",
+        "plan_id": "741ee54f-85e1-46e1-901b-29299748",
+    },
+    "83ee7942-13a4-4298-bf5f-1023d4fd": {
+        "plan_name": "Deluxe Plan",
+        "percent": "0.71",
+        "min": "3000",
+        "max": "50000",
+        "duration": "7",
+        "plan_id": "83ee7942-13a4-4298-bf5f-1023d4fd",
+    },
+}

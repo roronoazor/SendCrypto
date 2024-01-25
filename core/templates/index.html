@@ -1,0 +1,739 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<!-- back wrapper Start Here -->
+<div class="back-wrapper">
+  <div class="back-wrapper-inner">
+    <!-- Slider Start -->
+    <div class="home-slider-part owl-carousel">
+      <div class="single-slide">
+        <div class="slider-img">
+          <img
+            class="desktop"
+            src="{% static 'assets2/images/slider/hero-1.png' %}"
+            alt="Slider Image 1"
+          />
+          <img
+            class="mobile"
+            src="{% static 'assets2/images/slider/hero-1-mobile.png' %}"
+            alt="Slider Image 1"
+          />
+        </div>
+        <div class="slider-content home-content">
+          <div class="container home-container">
+            <div class="row home-row">
+              <div class="col-lg-9 home-content-container">
+                <div class="content-part home-content">
+                  <h2 class="slider-title" style="color: #000 !important">
+                    Instant Crypto-to-Cash: Convert Your Digital Assets to Cash
+                    in a Snap!
+                  </h2>
+                  <p class="slider-subtitle" style="color: #000 !important">
+                    Welcome to our cutting-edge digital platform that offers you
+                    the convenience of converting your cryptocurrency holdings
+                    into cash instantly. With our seamless service, you can
+                    effortlessly exchange your digital assets for cold, hard
+                    cash in no time. Our platform streamlines the process of
+                    transferring your cryptocurrency to us, ensuring a
+                    hassle-free and rapid experience. Whether you're looking to
+                    liquidate your crypto investments, need cash for an urgent
+                    expense, or simply prefer the comfort of physical currency,
+                    we've got you covered.
+                  </p>
+                  <!--	<a href="https://find-and-update.company-information.service.gov.uk/company/04905417" target="_blank">
+                                      <img src="assets2/images/business.png" style="max-width:200px;  margin-top:10px;">
+                                  </a> -->
+                  <div class="slider-btn" style="color: #000 !important">
+                    <a href="{% url 'initiate_payment' %}" class="back-btn"
+                      >Make a payment</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 hidden-md">
+                <div class="video-icon">
+                  <a
+                    class="popup-video"
+                    href="https://www.youtube.com/embed/iDdCcPShQ0o"
+                    title="Video Icon"
+                  >
+                    <img
+                      src="{% static 'assets2/images/slider/play.png' %}"
+                      alt="play icon"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="single-slide">
+        <div class="slider-img">
+          <img
+            class="desktop"
+            src="{% static 'assets2/images/slider/hero-2.png' %}"
+            alt="Slider Image 4"
+          />
+          <img
+            class="mobile"
+            src="{% static 'assets2/images/slider/hero-2-mobile.png' %}"
+            alt="Slider Image 4"
+          />
+        </div>
+        <div class="slider-content home-content">
+          <div class="container home-container">
+            <div class="row home-row">
+              <div class="col-lg-9 home-content-container">
+                <div class="content-part home-content">
+                  <h2 class="slider-title" style="color: #000 !important">
+                    A digital-native asset manager,for a digital-driven world.
+                  </h2>
+                  <p class="slider-subtitle" style="color: #000 !important">
+                    The investment climate is changing, and investors need to
+                    create ﬁnancial legacies that will stand the test of time.
+                    As the largest digital currency asset manager, CoinTrack
+                    Advisors helps investors access the ever-evolving digital
+                    economy to build their future in the present.
+                  </p>
+                  <!--	<a href="https://find-and-update.company-information.service.gov.uk/company/04905417" target="_blank">
+                                      <img src="assets2/images/business.png" style="max-width:200px;  margin-top:10px;">
+                                  </a> -->
+                  <div class="slider-btn" style="color: #000 !important">
+                    <a href="{% url 'home' %}" class="back-btn transparent"
+                      >Get Started</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 hidden-md">
+                <div class="video-icon">
+                  <a
+                    class="popup-video"
+                    href="https://www.youtube.com/embed/phOs-phSTh4?si=waLCfGCrnwmxtrqx"
+                    title="Video Icon"
+                  >
+                    <img
+                      src="{% static 'assets2/images/slider/play.png' %}"
+                      alt="play icon"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Slider End -->
+
+    <!-- market value slider -->
+    <section
+      id="main-content"
+      style="width: 100%; background: #0d1e50"
+      class=""
+    >
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container" style="width: 100%">
+        <div
+          class="tradingview-widget-container__widget"
+          style="width: 100%"
+        ></div>
+
+        <script
+          type="text/javascript"
+          src="../s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+          async
+        >
+          {
+             "symbols": [{
+                   "proName": "FOREXCOM:SPXUSD",
+                   "title": "S&P 500"
+             },
+             {
+                   "proName": "FOREXCOM:NSXUSD",
+                   "title": "US 100"
+             },
+             {
+                   "proName": "FX_IDC:EURUSD",
+                   "title": "EUR/USD"
+             },
+             {
+                   "proName": "BITSTAMP:BTCUSD",
+                   "title": "Bitcoin"
+             },
+             {
+                   "proName": "BITSTAMP:ETHUSD",
+                   "title": "Ethereum"
+             }
+             ],
+             "showSymbolLogo": true,
+             "colorTheme": "dark",
+             "isTransparent": true,
+             "displayMode": "adaptive",
+             "locale": "en"
+          }
+        </script>
+      </div>
+      <!-- TradingView Widget END -->
+    </section>
+    <!-- market value slider end -->
+
+    <!-- Start About here -->
+    <div class="back-about back-about-two pt-110 md-pt-70 pb-0">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7 col-sm-12 md-mb-30">
+            <div>
+              <iframe
+                width="100%"
+                height="400"
+                src="https://www.youtube.com/embed/phOs-phSTh4?si=waLCfGCrnwmxtrqx"
+              >
+              </iframe>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="back-sec-title">
+              <h5 class="back-subtitle secondary-color">About Us</h5>
+              <h3 class="back-title">A Leader in Digital Currency Exchange</h3>
+              <p class="back-desc second">
+                We believe that digital currencies will revolutionize our
+                economic legacy, political, and social systems. With that
+                transformation comes a meaningful generational shift in how
+                institutions and individuals approach business.
+              </p>
+            </div>
+
+            <div class="about-btn about-btn-two">
+              <a href="{% url 'home' %}" class="back-btn secondary"
+                >Get Started</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End About here -->
+
+    <!-- Start Service here -->
+    <div class="back-service style3">
+      <div class="container">
+        <div class="back-sec-title text-center mb-50 md-mb-30">
+          <h5 class="back-subtitle secondary-color">Features</h5>
+          <h2 class="back-title mb-0">Why Choose Us?</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 border-style border-right">
+            <div class="single-service">
+              <div class="service-icon">
+                <img
+                  src="{% static 'assets2/images/service/62.svg' %}"
+                  alt=""
+                />
+              </div>
+              <h3 class="service-title">International Reach</h3>
+              <p class="service-title-desc">
+                Providing our services across continents such as America,
+                Europe, Asia etc.
+              </p>
+              <a href="{% url 'home' %}" class="service-arrow-btn"
+                >Get Started<svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0d1e50"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-arrow-right"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline></svg
+              ></a>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6 border-style border-bottom border-right"
+          >
+            <div class="single-service mb-15 md-mb-0">
+              <div class="service-icon">
+                <img
+                  src="{% static 'assets2/images/service/12.svg' %}"
+                  alt=""
+                />
+              </div>
+              <h3 class="service-title">Data Security</h3>
+              <p class="service-title-desc">
+                All information is secured against DDoS attacks with full data
+                encryption.
+              </p>
+              <a href="{% url 'home' %}" class="service-arrow-btn">
+                Get Started
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0d1e50"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-arrow-right"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 border-style border-right">
+            <div class="single-service">
+              <div class="service-icon">
+                <img
+                  src="{% static 'assets2/images/service/72.svg' %}"
+                  alt=""
+                />
+              </div>
+              <h3 class="service-title">Seamless Payments</h3>
+              <p class="service-title-desc">
+                Our payment option is cryptocurrency for swift transactions.
+              </p>
+              <a href="{% url 'home' %}" class="service-arrow-btn">
+                Get Started
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0d1e50"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-arrow-right"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6 border-style border-bottom border-right"
+          >
+            <div class="single-service mb-15 md-mb-0">
+              <div class="service-icon">
+                <img
+                  src="{% static 'assets2/images/service/22.svg' %}"
+                  alt=""
+                />
+              </div>
+              <h3 class="service-title">Automated Services</h3>
+              <p class="service-title-desc">
+                All operations are AI-driven, providing our customers with
+                quality services.
+              </p>
+              <a href="{% url 'home' %}" class="service-arrow-btn">
+                Get Started
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0d1e50"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-arrow-right"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 border-style border-bottom">
+            <div class="single-service mb-15 md-mb-0">
+              <div class="service-icon">
+                <img
+                  src="{% static 'assets2/images/service/42.svg' %}"
+                  alt=""
+                />
+              </div>
+              <h3 class="service-title">Exceptional Customer Service</h3>
+              <p class="service-title-desc">
+                Our dedicated support team is always ready to assist you.
+              </p>
+              <a href="{% url 'home' %}" class="service-arrow-btn">
+                Get Started
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0d1e50"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-arrow-right"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6 border-style border-bottom border-right"
+          >
+            <div class="single-service mb-15 md-mb-0">
+              <div class="service-icon">
+                <img
+                  src="{% static 'assets2/images/service/32.svg' %}"
+                  alt=""
+                />
+              </div>
+              <h3 class="service-title">Experienced Team</h3>
+              <p class="service-title-desc">
+                We are unique/different because all our portfolios are insured
+                and offer only stable/sustainable returns.
+              </p>
+              <a href="{% url 'home' %}" class="service-arrow-btn"
+                >Get Started<svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0d1e50"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-arrow-right"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline></svg
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Service here -->
+
+    <!-- Video Guides -->
+    <div class="back-service style3">
+      <div class="container">
+        <div class="back-sec-title text-center mb-50 md-mb-30">
+          <h5 class="back-subtitle secondary-color">Video Guides</h5>
+          <h2 class="back-title mb-0">How to get started</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 border-style border-right">
+            <div class="single-service">
+              <h3 class="service-title">How to Signup</h3>
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/cnjnJYr-8dk?si=9j_ZIOkEW6D0trd8"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6 border-style border-bottom border-right"
+          >
+            <div class="single-service mb-15 md-mb-0">
+              <h3 class="service-title">How to Deposit/Invest</h3>
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/cnjnJYr-8dk?si=9j_ZIOkEW6D0trd8"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 border-style border-right">
+            <div class="single-service">
+              <h3 class="service-title">How to Withdraw Earnings</h3>
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/cnjnJYr-8dk?si=9j_ZIOkEW6D0trd8"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Video Guides -->
+
+    <!-- Start Faq here -->
+    <div class="back-faq back-faq-page pt-120 pb-120">
+      <div class="container">
+        <div class="back-sec-title text-center mb-50 md-mb-30">
+          <h5 class="back-subtitle secondary-color">FAQs</h5>
+          <h2 class="back-title mb-0">Frequently Asked Questions</h2>
+        </div>
+        <div class="back-tab-gird grid-style">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="tab-content">
+                <div
+                  id="four"
+                  class="single-tab-part tab-pane fade active show"
+                >
+                  <div id="back-accordion-1" class="back-accordion">
+                    <div class="accordion-item mb-10">
+                      <div class="accordion-header" id="heading-1">
+                        <h4 class="mb-0">
+                          <button
+                            class="accordion-btn collapsed"
+                            data-toggle="collapse"
+                            data-target="#collapse-1"
+                            aria-expanded="true"
+                            aria-controls="collapse-1"
+                          >
+                            1. How does this work?
+                          </button>
+                        </h4>
+                      </div>
+                      <div
+                        id="collapse-1"
+                        class="collapse"
+                        aria-labelledby="heading-1"
+                        data-parent="#back-accordion-1"
+                      >
+                        <div class="accordion-body">
+                          It's simple! You send us your cryptocurrency, and we
+                          provide you with the equivalent cash amount based on
+                          current market rates. The process is fast, secure, and
+                          hassle-free.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item mb-10">
+                      <div class="accordion-header" id="heading-2">
+                        <h4 class="mb-0">
+                          <button
+                            class="accordion-btn collapsed"
+                            data-toggle="collapse"
+                            data-target="#collapse-2"
+                            aria-expanded="false"
+                            aria-controls="collapse-2"
+                          >
+                            2. How long does it take to receive cash after
+                            sending crypto?
+                          </button>
+                        </h4>
+                      </div>
+                      <div
+                        id="collapse-2"
+                        class="collapse"
+                        aria-labelledby="heading-2"
+                        data-parent="#back-accordion-1"
+                      >
+                        <div class="accordion-body">
+                          The processing time can vary depending on the
+                          cryptocurrency network's speed and the amount being
+                          exchanged. However, we strive to complete transactions
+                          as quickly as possible. In most cases, you can expect
+                          to receive your cash within a short time frame.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item mb-10">
+                      <div class="accordion-header" id="heading-3">
+                        <h4 class="mb-0">
+                          <button
+                            class="accordion-btn collapsed"
+                            data-toggle="collapse"
+                            data-target="#collapse-3"
+                            aria-expanded="false"
+                            aria-controls="collapse-3"
+                          >
+                            3. Is it safe to use CoinSend?
+                          </button>
+                        </h4>
+                      </div>
+                      <div
+                        id="collapse-3"
+                        class="collapse"
+                        aria-labelledby="heading-3"
+                        data-parent="#back-accordion-1"
+                      >
+                        <div class="accordion-body">
+                          <span class="d-block"
+                            >Yes, your security is our top priority. We use
+                            robust encryption and security measures to protect
+                            your transactions and personal information. Our
+                            platform is designed to ensure a secure and
+                            trustworthy experience.</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item mb-10">
+                      <div class="accordion-header" id="heading-4">
+                        <h4 class="mb-0">
+                          <button
+                            class="accordion-btn collapsed"
+                            data-toggle="collapse"
+                            data-target="#collapse-4"
+                            aria-expanded="false"
+                            aria-controls="collapse-4"
+                          >
+                            4. What cryptocurrencies do you accept?
+                          </button>
+                        </h4>
+                      </div>
+                      <div
+                        id="collapse-4"
+                        class="collapse"
+                        aria-labelledby="heading-4"
+                        data-parent="#back-accordion-1"
+                      >
+                        <div class="accordion-body mb-0">
+                          <span class="d-block"
+                            >We accept a wide range of cryptocurrencies,
+                            including but not limited to Bitcoin (BTC), Ethereum
+                            (ETH), Litecoin (LTC), and more. You can check our
+                            supported currencies on our platform.</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item mb-10">
+                      <div class="accordion-header" id="heading-5">
+                        <h4 class="mb-0">
+                          <button
+                            class="accordion-btn collapsed"
+                            data-toggle="collapse"
+                            data-target="#collapse-5"
+                            aria-expanded="false"
+                            aria-controls="collapse-5"
+                          >
+                            5. How can I contact customer support if I have
+                            questions or issues?
+                          </button>
+                        </h4>
+                      </div>
+                      <div
+                        id="collapse-5"
+                        class="collapse"
+                        aria-labelledby="heading-5"
+                        data-parent="#back-accordion-1"
+                      >
+                        <div class="accordion-body mb-0">
+                          <span class="d-block"
+                            >We have a dedicated customer support team available
+                            to assist you. You can reach out to us through our
+                            contact page, email, or live chat on our platform.
+                            We're here to help you with any inquiries or
+                            concerns you may have.</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Faq here -->
+
+    <!-- Start Clients here -->
+    <div class="back-clients">
+      <div class="container">
+        <div class="back-sec-title text-center mb-50 md-mb-30">
+          <h5 class="back-subtitle">Testimonials</h5>
+          <h2 class="back-title mb-0">What Our Clients Say</h2>
+        </div>
+        <div class="client-slider">
+          <div class="single-client">
+            <iframe
+              width="300"
+              height="250"
+              src="https://www.youtube.com/embed/uHhRxurgqb4?si=aNAjnSbXGF10knV3"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="single-client">
+            <iframe
+              width="300"
+              height="250"
+              src="https://www.youtube.com/embed/uHhRxurgqb4?si=aNAjnSbXGF10knV3"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="single-client">
+            <iframe
+              width="300"
+              height="250"
+              src="https://www.youtube.com/embed/uHhRxurgqb4?si=aNAjnSbXGF10knV3"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="single-client">
+            <iframe
+              width="300"
+              height="250"
+              src="https://www.youtube.com/embed/uHhRxurgqb4?si=aNAjnSbXGF10knV3"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="single-client">
+            <iframe
+              width="300"
+              height="250"
+              src="https://www.youtube.com/embed/uHhRxurgqb4?si=aNAjnSbXGF10knV3"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Clients here -->
+  </div>
+</div>
+<!-- back wrapper End Here -->
+{% endblock %}

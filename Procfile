@@ -1,0 +1,1 @@
+web: gunicorn incidentBackend.wsgi --log-file -

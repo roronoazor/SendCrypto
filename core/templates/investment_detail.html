@@ -1,0 +1,79 @@
+{% extends 'dashboard_base.html' %} {% load custom_filters %} {% load static %}
+{% block content %}
+<div class="dashboard-hero-content text-white">
+  <h3 class="title">
+    Manage Deposit {{ user_deposit.plan_id|concatenate_ids:user_deposit.id }}
+  </h3>
+  <ul class="breadcrumb">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li>
+      <a href="{% url 'investments' %}">Investments</a>
+    </li>
+    <li>Deposit {{ user_deposit.plan_id|concatenate_ids:user_deposit.id }}</li>
+  </ul>
+</div>
+<div class="container-fluid">
+  <div class="mt--85">
+    <div class="row mb-5">
+      <div class="col-sm-8">
+        <div class="card">
+          <div class="card-body">
+            <h4>Deposit Information</h4>
+
+            <div class="row mt-4">
+              <div class="col-sm-4">
+                <div class="font-40 col-grey">
+                  &#xa3;{{ user_deposit.amount_invested|floatformat:"2g" }}
+                  <br />
+                  <p class="text-muted mt-2 font-13">amount invested</p>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="font-40 text-center col-green">
+                  +{{ user_deposit.per_cent }}% <br />
+                  <p class="text-muted mt-2 font-13">daily interest</p>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="font-40 text-right col-blue">
+                  &#xa3;{{ amount_to_receive|floatformat:"2g" }} <br />
+                  <p class="text-muted mt-2 font-13">amount to receive</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body p-0">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-auto">
+                    <i class="fa fa-calendar-day fa-2x col-light-blue"></i>
+                  </div>
+                  <div class="col">
+                    <h6>Date Deposited</h6>
+                    {{ user_deposit.date_created|format_datetime }}
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid sticky-bottom">
+    <div class="dashboard-footer">
+      <div class="d-flex flex-wrap justify-content-between m-0-15-none">
+        <div class="left">
+          &copy; 2023
+          <a href="https://gencapitals.com">CoinTrack Advisors</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

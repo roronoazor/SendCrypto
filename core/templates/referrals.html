@@ -1,0 +1,87 @@
+{% extends 'dashboard_base.html' %}
+{% load custom_filters %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard-hero-content text-white">
+  <h3 class="title">Affiliate Marketing</h3>
+  <ul class="breadcrumb">
+    <li><a href="{% url 'home' %}%">Home</a></li>
+    <li>Affiliate Marketing</li>
+  </ul>
+  <div class="card card-body w-25 p-2">
+    <h6 class="col-green" style="margin-top: 1px">
+      <i class="fa fa-briefcase mr-2"></i> Normal Mode
+    </h6>
+  </div>
+</div>
+</div>
+<div class="container-fluid">
+<div class="mt--85">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+          <h4>
+            My Referrals
+            <span class="badge badge-primary">
+              No referrals yet
+            </span>
+          </h4>
+            {% if referrals|length == 0 %}
+                <div class="mt-5">
+                    <h4 class="text-muted">No referrals yet</h4>
+                    <p class="mt-2">
+                        Copy your referral link and start referring.
+                    </p>
+                    <a href="{% url 'dashboard' %}" class="btn btn-primary mt-3">Referral Settings</a>
+                </div>
+            {% else %}
+                <ul class="list-unstyled list-unstyled-border">
+                    {% for profile in referrals %}
+                        <li class="media mt-4">
+                            <img class="mr-3 rounded-circle" src="https://gencapitals.com/auth/img/avatar/avatar-1.png" alt="avatar" width="50">
+                            <div class="media-body">
+                                <div class="float-right text-primary">{{ profile.user.date_joined|format_date }}</div>
+                                <h6 class="media-title mb-2">{{ profile.user.first_name }}</h6>
+                                <p class="text-muted mb-2">You referred {{ profile.user.first_name }} on {{ profile.user.date_joined|format_datetime }} </p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      {% if referrer %}
+      <div class="card">
+        <div class="card-body">
+          <h4>My Referrer</h4>
+            <h3>
+              <small class="text-muted">You were referred by</small>
+                {{ referrer }}
+              <small class="text-muted">on {{ user.date_joined|format_date }}</small>
+            </h3>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+</div>
+</div>
+  </div>
+</div>
+<div class="container-fluid sticky-bottom">
+  <div class="dashboard-footer">
+    <div
+      class="d-flex flex-wrap justify-content-between m-0-15-none"
+    >
+      <div class="left">
+        &copy; 2023
+        <a href="{% url 'home' %}">CoinTrack Advisors</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

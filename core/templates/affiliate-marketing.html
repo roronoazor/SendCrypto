@@ -1,0 +1,265 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="back-wrapper">
+  <div class="back-wrapper-inner">
+    <!-- Back Breadcrumbs Start Here -->
+    <div class="back-breadcrumbs">
+      <div class="breadcrumbs-wrap">
+        <img
+          class="desktop"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <img
+          class="mobile"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner-mobile.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <div class="breadcrumbs-inner">
+          <div class="container">
+            <div class="breadcrumbs-text">
+              <h1 class="breadcrumbs-title">Affiliate Marketing</h1>
+              <div class="back-nav">
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li>Affiliate Marketing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Back Breadcrumbs End Here -->
+
+    <!-- Start About here -->
+    <div class="back-about pt-20 md-pt-60 pb-20 md-pb-100">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="offset-lg-1"></div>
+          <div class="col-lg-5">
+            <div class="about-img">
+              <img
+                style="width: 100%"
+                src="{% static 'assets2/images/meeting-3.jpg' %}"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="offset-lg-1"></div>
+          <div class="col-lg-5">
+            <div class="back-sec-title">
+              <h5 class="back-subtitle">Affiliate Markerting</h5>
+              <h2 class="back-title">Become an Affiliate Marketer</h2>
+            </div>
+            <div class="counter-part">
+              <div class="">
+                <p>
+                  Earn Commissions through affiliate marketing and forming
+                  successful partnership. By sharing our platform with others,
+                  you can earn profits as you build teams and collect a
+                  percentage of all fees!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-20 pb-20">
+          <div class="container">
+            <h2 class="back-title" style="color: #0d1e50; font-weight: bold">
+              How it works
+            </h2>
+            <h3 class="back-title">Step 1 - Sign Up</h3>
+
+            <p>
+              Everyone can join CoinTrack Advisors Affiliate Program. If you
+              don’t have an account yet, it only takes a few minutes to create
+              one. After logging in to your account, you will be able to obtain
+              access to the Affiliate Dashboard and start generating referral
+              link . Share the referral link across all your friends, family and
+              social networks.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-20 pb-20">
+          <div class="container">
+            <h3 class="back-title">Step 2 - Build</h3>
+
+            <p>
+              Spread the word with your fellow traders or within your forex and
+              crypto communities. Build a community of forex and crypto
+              enthusiasts based upon the mutual relationships that exist in your
+              network.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-20 pb-20">
+          <div class="container">
+            <h3 class="back-title">Step 3 - Track</h3>
+
+            <p>
+              The Affiliate Dashboard comes in handy when tracking your
+              referrals performance. You can also see how much you have earned
+              and how your referrals have been doing so far through the
+              dashboard. No need to worry about privacy though, since all
+              referrals will be shown in nicknames without revealing any
+              personal information.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-20">
+          <div class="container">
+            <h3 class="back-title">Step 4 - Earn</h3>
+
+            <p>
+              Every time your referrals invest, you will receive a percentage of
+              their investment and margin funding fees. This happens in
+              real-time, viewable on your Affiliate Dashboard. You make as much
+              as 12% referral bonus on your first 20 referrals.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End About here -->
+
+    <!-- Start Pricing here -->
+    <div class="back-pricing">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 md-mb-30">
+            <div class="single-pricing" style="padding-top: 0">
+              <div class="pricing-header" style="padding: 0">
+                <div
+                  style="
+                    width: 100%;
+                    background: black;
+                    height: 200px;
+                    margin-bottom: 1rem;
+                  "
+                >
+                  <img
+                    style="width: 100%; height: 100%; object-fit: cover"
+                    src="{% static 'assets2/images/meeting-1.jpg' %}"
+                    alt=""
+                  />
+                </div>
+                <div class="price" style="text-align: center">
+                  <h2 style="font-weight: bold">Level 1</h2>
+                  <h3 class="" style="font-weight: bold">
+                    12%
+                    <span style="font-weight: normal; font-size: 1rem"
+                      >Commision</span
+                    >
+                  </h3>
+                </div>
+              </div>
+              <div class="pricing-body" style="text-align: center">
+                <ul class="pricing-features">
+                  <li>20 Referrals required</li>
+                  <li>£450 Monthly income</li>
+                </ul>
+              </div>
+              <div class="pricing-btn">
+                <a
+                  class="back-btn transparent select"
+                  href="{% url 'user_login' %}"
+                  >Get Started</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 md-mb-30">
+            <div class="single-pricing" style="padding-top: 0">
+              <div class="pricing-header" style="padding: 0">
+                <div
+                  style="
+                    width: 100%;
+                    background: black;
+                    height: 200px;
+                    margin-bottom: 1rem;
+                  "
+                >
+                  <img
+                    style="width: 100%; height: 100%; object-fit: cover"
+                    src="{% static 'assets2/images/meeting-2.jpg' %}"
+                    alt=""
+                  />
+                </div>
+                <div class="price" style="text-align: center">
+                  <h2 style="font-weight: bold">Level 2</h2>
+                  <h3 class="" style="font-weight: bold">
+                    15%
+                    <span style="font-weight: normal; font-size: 1rem"
+                      >Commision</span
+                    >
+                  </h3>
+                </div>
+              </div>
+              <div class="pricing-body" style="text-align: center">
+                <ul class="pricing-features">
+                  <li>50 Referrals required</li>
+                  <li>£900 Monthly income</li>
+                </ul>
+              </div>
+              <div class="pricing-btn">
+                <a
+                  class="back-btn transparent select"
+                  href="{% url 'user_login' %}"
+                  >Get Started</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 md-mb-30">
+            <div class="single-pricing" style="padding-top: 0">
+              <div class="pricing-header" style="padding: 0">
+                <div
+                  style="
+                    width: 100%;
+                    background: black;
+                    height: 200px;
+                    margin-bottom: 1rem;
+                  "
+                >
+                  <img
+                    style="width: 100%; height: 100%; object-fit: cover"
+                    src="{% static 'assets2/images/meeting-3.jpg' %}"
+                    alt=""
+                  />
+                </div>
+                <div class="price" style="text-align: center">
+                  <h2 style="font-weight: bold">Level 3</h2>
+                  <h3 class="" style="font-weight: bold">
+                    20%
+                    <span style="font-weight: normal; font-size: 1rem"
+                      >Commision</span
+                    >
+                  </h3>
+                </div>
+              </div>
+              <div class="pricing-body" style="text-align: center">
+                <ul class="pricing-features">
+                  <li>100 Referrals required</li>
+                  <li>£1,500 Monthly income</li>
+                </ul>
+              </div>
+              <div class="pricing-btn">
+                <a
+                  class="back-btn transparent select"
+                  href="{% url 'user_login' %}"
+                  >Get Started</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Pricing here -->
+  </div>
+</div>
+{% endblock %}

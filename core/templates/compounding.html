@@ -1,0 +1,105 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard-hero-content text-white">
+  <h3 class="title">Compounding Mode</h3>
+  <ul class="breadcrumb">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li>Compounding Mode</li>
+  </ul>
+  <a
+    href="{% url 'deposits' %}"
+    class="btn btn-light"
+    >Make Investment</a
+  >
+  <a
+    href="{% url 'investments' %}"
+    class="btn btn-light"
+    >View Investments</a
+  >
+</div>
+</div>
+<div class="container-fluid">
+<div class="mt--85">
+  <div class="row justify-content-center mt--85">
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Compounding Balance</span>
+            <h5 class="amount">{{ compounding|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dashboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Total Deposits</span>
+            <h5 class="amount">{{ deposits|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+            src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dashboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Total Withdrawals</span>
+            <h5 class="amount">{{ withdrawals|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+            src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dashboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Total Earnings</span>
+            <h5 class="amount">{{ earnings|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dashboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid sticky-bottom">
+  <div class="dashboard-footer">
+    <div
+      class="d-flex flex-wrap justify-content-between m-0-15-none"
+    >
+      <div class="left">
+        &copy; 2023
+        <a href="{% url 'home' %}">CoinTrack Advisors</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

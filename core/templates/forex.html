@@ -1,0 +1,134 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="back-wrapper">
+  <div class="back-wrapper-inner">
+    <!-- Back Breadcrumbs Start Here -->
+    <div class="back-breadcrumbs">
+      <div class="breadcrumbs-wrap">
+        <img
+          class="desktop"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <img
+          class="mobile"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner-mobile.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <div class="breadcrumbs-inner">
+          <div class="container">
+            <div class="breadcrumbs-text">
+              <h1 class="breadcrumbs-title">Forex and Metals</h1>
+              <div class="back-nav">
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li>Forex and Metals</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Back Breadcrumbs End Here -->
+
+    <!-- Start Blog here -->
+    <div id="back-blog" class="back-blog-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="blog-single-inner">
+              <div class="blog-content">
+                <p>
+                  Forex or Fx is an acronym of Foreign Exchange and Forex
+                  trading means to trade on this market. Trading takes place by
+                  predicting how one currency performs against another in a
+                  Forex pair.
+                </p>
+                <p>
+                  It is the largest market in the world with average daily
+                  trading volumes exceeding trillions of dollars.
+                </p>
+                <p>
+                  For those who know what they are doing, Forex trading can be
+                  very profitable activity although it doesn't come without
+                  risks. To get the best out of your trading experience. It is
+                  critical that you choose a Forex platform/broker that can
+                  offer you everything you need from demo platforms to
+                  educational tools.
+                </p>
+                <p>
+                  Selecting the right broker can be a time-consuming process.
+                  Who do you choose and why? What do you look out for and how do
+                  you know that the company/broker is safe? That is where we
+                  come in. Our team of experts scour the internet reviewing and
+                  rating all of the markets, so that we only present you with
+                  the best of them. It is then up to you to make an informed
+                  decision as to how much to invest.
+                </p>
+
+                <!-- Start slide here -->
+                <div class="back-team back-agent">
+                  <div class="container">
+                    <div class="team-slider owl-carousel">
+                      <div class="single-team">
+                        <img
+                          style="max-height: 100px; object-fit: cover"
+                          src="{% static 'assets2/images/escrow/1.png' %}"
+                          alt="Team Image"
+                        />
+                      </div>
+                      <div class="single-team">
+                        <img
+                          style="max-height: 100px; object-fit: cover"
+                          src="{% static 'assets2/images/escrow/2.png' %}"
+                          alt="Team Image"
+                        />
+                      </div>
+                      <div class="single-team">
+                        <img
+                          style="max-height: 100px; object-fit: cover"
+                          src="{% static 'assets2/images/escrow/3.png' %}"
+                          alt="Team Image"
+                        />
+                      </div>
+                      <div class="single-team">
+                        <img
+                          style="max-height: 100px; object-fit: cover"
+                          src="{% static 'assets2/images/escrow/4.png' %}"
+                          alt="Team Image"
+                        />
+                      </div>
+                      <div class="single-team">
+                        <img
+                          style="max-height: 100px; object-fit: cover"
+                          src="{% static 'assets2/images/escrow/5.png' %}"
+                          alt="Team Image"
+                        />
+                      </div>
+                      <div class="single-team">
+                        <img
+                          style="max-height: 100px; object-fit: cover"
+                          src="{% static 'assets2/images/escrow/6.png' %}"
+                          alt="Team Image"
+                        />
+                      </div>
+                      <div class="single-team">
+                        <img
+                          style="max-height: 100px; object-fit: cover"
+                          src="{% static 'assets2/images/escrow/7.png' %}"
+                          alt="Team Image"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End slide here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

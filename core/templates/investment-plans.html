@@ -1,0 +1,228 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="back-wrapper">
+  <div class="back-wrapper-inner">
+    <!-- Back Breadcrumbs Start Here -->
+    <div class="back-breadcrumbs">
+      <div class="breadcrumbs-wrap">
+        <img
+          class="desktop"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <img
+          class="mobile"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner-mobile.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <div class="breadcrumbs-inner">
+          <div class="container">
+            <div class="breadcrumbs-text">
+              <h1 class="breadcrumbs-title">Investment Plans</h1>
+              <div class="back-nav">
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li>Investment Plans</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Back Breadcrumbs End Here -->
+
+    <!-- Start Pricing here -->
+    <div class="back-pricing">
+      <div class="container">
+        <div class="back-sec-title text-center mb-50 md-mb-30">
+          <h5 class="back-subtitle secondary-color">Investment Plans</h5>
+          <h2 class="back-title mb-0">Our Investment plans</h2>
+          <p class="back-desc mb-0">
+            <span style="font-weight: bold"
+              >We have a 30% commission rate on all withdrawals from your
+              earnings.</span
+            >
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 md-mb-30">
+            <div class="single-pricing">
+              <div class="pricing-header">
+                <div class="price" style="text-align: center">
+                  <h2 style="font-weight: bold">Deluxe Plan</h2>
+                  <h3 class="" style="font-weight: bold">
+                    5% - 8%
+                    <span style="font-weight: normal; font-size: 1rem"
+                      >Weekly ROI</span
+                    >
+                  </h3>
+                </div>
+              </div>
+              <div class="pricing-body">
+                <ul class="pricing-features">
+                  <li>
+                    <span style="font-weight: bold">Minimum:</span> £50,000
+                  </li>
+                  <li>
+                    <span style="font-weight: bold">Referral Bonus:</span> 5%
+                  </li>
+                  <li>
+                    <span style="font-weight: bold">Money Back Guarantee:</span>
+                    100%
+                  </li>
+                </ul>
+              </div>
+              <div class="pricing-btn">
+                <a
+                  class="back-btn transparent select"
+                  href="{% url 'user_login' %}"
+                  >Get Started</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 md-mb-30">
+            <div class="single-pricing">
+              <div class="pricing-header">
+                <div class="price" style="text-align: center">
+                  <h2 style="font-weight: bold">NFP Plan</h2>
+                  <h3 class="" style="font-weight: bold">
+                    35%
+                    <span style="font-weight: normal; font-size: 1rem"
+                      >Monthly ROI</span
+                    >
+                  </h3>
+                </div>
+              </div>
+              <div class="pricing-body">
+                <ul class="pricing-features">
+                  <li>
+                    <span style="font-weight: bold">Minimum:</span> £100,000
+                  </li>
+                  <li>
+                    <span style="font-weight: bold">Referral Bonus:</span> 10%
+                  </li>
+                  <li>
+                    <span style="font-weight: bold">Money Back Guarantee:</span>
+                    100%
+                  </li>
+                </ul>
+              </div>
+              <div class="pricing-btn">
+                <a
+                  class="back-btn transparent select"
+                  href="{% url 'user_login' %}"
+                  >Get Started</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 md-mb-30">
+            <div class="single-pricing">
+              <div class="pricing-header">
+                <div class="price" style="text-align: center">
+                  <h2 style="font-weight: bold">Premium Plan</h2>
+                  <h3 class="" style="font-weight: bold">
+                    500%
+                    <span style="font-weight: normal; font-size: 1rem"
+                      >Annual ROI</span
+                    >
+                  </h3>
+                </div>
+              </div>
+              <div class="pricing-body">
+                <ul class="pricing-features">
+                  <li>
+                    <span style="font-weight: bold">Minimum:</span> £2,000,000
+                  </li>
+                  <li>
+                    <span style="font-weight: bold">Referral Bonus:</span> 15%
+                  </li>
+                  <li>
+                    <span style="font-weight: bold">Money Back Guarantee:</span>
+                    100%
+                  </li>
+                </ul>
+              </div>
+              <div class="pricing-btn">
+                <a
+                  class="back-btn transparent select"
+                  href="{% url 'user_login' %}"
+                  >Get Started</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 md-mb-30">
+            <div class="single-pricing">
+              <div class="pricing-header">
+                <div class="price" style="text-align: center">
+                  <h2 style="font-weight: bold">IEO</h2>
+                  <h3 class="" style="font-weight: bold">
+                    500%<br /><span style="font-weight: normal; font-size: 1rem"
+                      >7 Months ROI</span
+                    >
+                  </h3>
+                </div>
+              </div>
+              <div class="pricing-body">
+                <p>
+                  With up to 10 BTC deposited into this portfolio, investors are
+                  projected to receive a minimum of 500% ROI after 7 months of
+                  trades when they invest in this portfolio. There is also a 10%
+                  referral bonus for our clients.
+                </p>
+              </div>
+              <p></p>
+              <div class="pricing-btn">
+                <a
+                  class="back-btn transparent select"
+                  href="{% url 'user_login' %}"
+                  >Get Started</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 md-mb-30">
+            <div class="single-pricing">
+              <div class="pricing-header">
+                <div class="price" style="text-align: center">
+                  <h2 style="font-weight: bold">ERC 20</h2>
+                  <h3 class="" style="font-weight: bold">
+                    700% - 1000%<br /><span
+                      style="font-weight: normal; font-size: 1rem"
+                      >Annual ROI</span
+                    >
+                  </h3>
+                </div>
+              </div>
+              <div class="pricing-body">
+                <p>
+                  With up to 200 ETH, investors are projected to receive a
+                  minimum of 700% - 1000% ROI after 12 months of trades when
+                  they invest in this portfolio. There is also a 3% referral
+                  bonus for our clients.
+                </p>
+              </div>
+              <div class="pricing-btn">
+                <a
+                  class="back-btn transparent select"
+                  href="{% url 'user_login' %}"
+                  >Get Started</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Pricing here -->
+  </div>
+</div>
+
+{% endblock %}

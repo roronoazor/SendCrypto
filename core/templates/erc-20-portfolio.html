@@ -1,0 +1,160 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="back-wrapper">
+  <div class="back-wrapper-inner">
+    <!-- Back Breadcrumbs Start Here -->
+    <div class="back-breadcrumbs">
+      <div class="breadcrumbs-wrap">
+        <img
+          class="desktop"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <img
+          class="mobile"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner-mobile.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <div class="breadcrumbs-inner">
+          <div class="container">
+            <div class="breadcrumbs-text">
+              <h1 class="breadcrumbs-title">IDO/ERC 20 Portfolio</h1>
+              <div class="back-nav">
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li>IDO/ERC-20</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Back Breadcrumbs End Here -->
+
+    <!-- Start Blog here -->
+    <div id="back-blog" class="back-blog-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="blog-single-inner">
+              <div class="blog-content">
+                <div
+                  style="display: flex; justify-content: center"
+                  class="blog-image"
+                >
+                  <img src="{% static 'assets2/images/erc.png' %}" alt="" />
+                </div>
+
+                <h3>What is IDO?</h3>
+
+                <p>
+                  Initial dex offerings, or IDOs, are tokens that represent any
+                  type of asset hosted on a decentralized exchange (DEX) — an
+                  IDO is when a project launches a token through a decentralized
+                  liquidity exchange. IDOs can be created for anything from
+                  cryptocurrency to a music album, to aether powered battle
+                  ships. IDOs offer businesses a tool for engaging their
+                  communities in an economy that both enriches their products
+                  and services while allowing them to make smart business
+                  decisions regarding their assets.
+                </p>
+
+                <p>
+                  In the same way that traditional startups receive venture
+                  capital before launching, projects issuing initial
+                  <a
+                    href="https://coinmarketcap.com/alexandria/glossary/decentralized-exchange-dex"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >DEX</a
+                  >
+                  offerings receive financing from individual investors. Unlike
+                  an initial public offering, investors in initial dex offerings
+                  never own any equity in the project. IDOs have some benefits
+                  that may make them more attractive than
+                  <a
+                    href="https://coinmarketcap.com/alexandria/glossary/initial-coin-offering-ico"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >ICOs</a
+                  >
+                  and IEOs: immediate liquidity, immediate trading and lower
+                  costs for listing.
+                </p>
+
+                <h3>
+                  What is ERC 20 and what does it provide for a CoinTrack
+                  Advisors Investor?
+                </h3>
+
+                <p>
+                  The popular cryptocurrency and blockchain system
+                  <a
+                    href="https://www.investopedia.com/terms/e/ethereum.asp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Ethereum</a
+                  >
+                  is based on the use of tokens, which can be bought, sold, or
+                  traded. Ethereum was launched in 2015, and since then it has
+                  become one of the driving forces behind the popularity of
+                  cryptocurrency. In the Ethereum system, tokens represent a
+                  diverse range of digital assets, such as vouchers, IOUs, or
+                  even real-world, tangible objects. Essentially, Ethereum
+                  tokens are smart contracts that make use of the Ethereum
+                  blockchain.
+                </p>
+
+                <h3>What Is ERC-20?</h3>
+
+                <p>
+                  One of the most significant Ethereum tokens is known as
+                  ERC-20. ERC-20 has emerged as the technical standard; it is
+                  used for all smart contracts on the Ethereum blockchain for
+                  token implementation and provides a list of rules that all
+                  Ethereum-based tokens must follow.
+                </p>
+
+                <p>
+                  ERC-20 is similar, in some respects, to bitcoin, Litecoin, and
+                  any other cryptocurrency; ERC-20 tokens are blockchain-based
+                  assets that have value and can be sent and received. The
+                  primary difference is that instead of running on their own
+                  blockchain, ERC-20 tokens are issued on the Ethereum network.
+                </p>
+
+                <p>
+                  Plenty of well-known digital currencies use the ERC-20
+                  standard, including Maker (MKR), Basic Attention Token (BAT),
+                  Augur (REP), and OmiseGO (OMG).
+                </p>
+
+                <p>
+                  CoinTrack Advisors board members have real deep connection
+                  with great development teams precisely developing
+                  cryptocurrency using the ERC 20 token standard and history has
+                  proven the best projects yields from 600% ROI upwards within
+                  first 6 - 9 months of trading immediately after listing.
+                </p>
+
+                <p>
+                  Our duty is to discover the best opportunities while
+                  maximizing benefits at minimized risks levels using upper
+                  echelon risk management techniques.
+                </p>
+
+                <p>
+                  With up to 200 ETH, investors are projected to receive a
+                  minimum of 700% - 1000% ROI after 12 months of trades when
+                  they invest in this portfolio. There is also a 3% referral
+                  bonus for our clients.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

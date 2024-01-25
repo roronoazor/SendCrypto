@@ -1,0 +1,98 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="back-wrapper">
+  <div class="back-wrapper-inner">
+    <!-- Back Breadcrumbs Start Here -->
+    <div class="back-breadcrumbs">
+      <div class="breadcrumbs-wrap">
+        <img
+          class="desktop"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+
+        <img
+          class="mobile"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner-mobile.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <div class="breadcrumbs-inner">
+          <div class="container">
+            <div class="breadcrumbs-text">
+              <h1 class="breadcrumbs-title">Initiate Crypto Transfer</h1>
+              <div class="back-nav">
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li>Crypto Transfer</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Back Breadcrumbs End Here -->
+
+    <!-- Start Blog here -->
+    <div id="back-blog" class="back-blog back-blog-page pt-120">
+      <div class="container">
+        <h2>Initiate Crypto Transfer</h2>
+        <form
+          class="border rounded p-4"
+          method="POST"
+          action="{% url 'initiate_payment' %}"
+        >
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="name">Your Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Enter Your name"
+              name="name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Your Email:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Enter Your email"
+              name="email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="amount">Amount (USD):</label>
+            <input
+              type="number"
+              class="form-control"
+              id="amount"
+              name="amount"
+              placeholder="Enter amount in USD"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea
+              class="form-control"
+              id="description"
+              rows="3"
+              name="description"
+              placeholder="Enter a description (optional)"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Initiate Transfer
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- End Blog here -->
+  </div>
+</div>
+{% endblock %}

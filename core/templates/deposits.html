@@ -1,0 +1,439 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard-hero-content text-white">
+  <h3 class="title">Make Investment</h3>
+  <ul class="breadcrumb">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li>Make Investment</li>
+  </ul>
+</div>
+</div>
+<div class="container-fluid">
+<div class="mt--85">
+  <div class="row justify-content-center mt--85">
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Balance</span>
+            <h5 class="amount"> {{ balance|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Total Deposits</span>
+            <h5 class="amount"> {{ deposits|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Active Deposits</span>
+            <h5 class="amount">{{ active_deposits|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Ended Deposits</span>
+            <h5 class="amount">{{ ended_deposits|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/payment/check.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="deposit mt-4">
+    <h3 class="main-title">Make Deposits</h3>
+    {% include 'styled_messages.html' %}
+    <h4 class="main-subtitle">01. Select a Plan</h4>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card" id="83ee7942-13a4-4298-bf5f-1023d4fd">
+          <div class="card-header border-0 bg-white">
+            <div class="row">
+              <div class="col">
+                <h5>Deluxe Plan</h5>
+              </div>
+              <div class="col-auto">
+                0.71%
+                <span><b>every day</b></span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <b>Range Amount:</b>
+                <span class="float-right">&#xa3;3,000 - &#xa3;50,000</span>
+              </li>
+              <li class="list-group-item">
+                <b>Money back guarantee:</b>
+                <span class="float-right"> 100%</span>
+              </li>
+              <li class="list-group-item">
+                <b>Duration:</b>
+                <span class="float-right">7 days</span>
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <input
+              type="radio"
+              name="select"
+              class="select-plan"
+              id="selectPlan"
+              style="height: 30px"
+              data-codex="83ee7942-13a4-4298-bf5f-1023d4fd"
+              data-percent="0.71"
+              data-min="3000"
+              data-max="50000"
+              data-duration="7"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card" id="741ee54f-85e1-46e1-901b-29299748">
+          <div class="card-header border-0 bg-white">
+            <div class="row">
+              <div class="col">
+                <h5>Nfp Plan</h5>
+              </div>
+              <div class="col-auto">
+                1.10%
+                <span><b>every day</b></span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <b>Minimum Amount:</b>
+                <span class="float-right">&#xa3;100,000</span>
+              </li>
+              <li class="list-group-item">
+                <b>Money back guarantee:</b>
+                <span class="float-right"> 100%</span>
+              </li>
+              <li class="list-group-item">
+                <b>Duration:</b>
+                <span class="float-right">30 days</span>
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <input
+              type="radio"
+              name="select"
+              class="select-plan"
+              id="selectPlan"
+              style="height: 30px"
+              data-codex="741ee54f-85e1-46e1-901b-29299748"
+              data-percent="1.10"
+              data-min="100000"
+              data-max="1900000"
+              data-duration="30"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card" id="cebd0ec6-c724-4ad2-9aa3-17c2dc9c">
+          <div class="card-header border-0 bg-white">
+            <div class="row">
+              <div class="col">
+                <h5>Premium Plan</h5>
+              </div>
+              <div class="col-auto">
+                1.36%
+                <span><b>every day</b></span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <b>Minimum Amount:</b>
+                <span class="float-right">&#xa3;2,000,000</span>
+              </li>
+              <li class="list-group-item">
+                <b>Money back guarantee:</b>
+                <span class="float-right"> 100%</span>
+              </li>
+              <li class="list-group-item">
+                <b>Duration:</b>
+                <span class="float-right">365 days</span>
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <input
+              type="radio"
+              name="select"
+              class="select-plan"
+              id="selectPlan"
+              style="height: 30px"
+              data-codex="cebd0ec6-c724-4ad2-9aa3-17c2dc9c"
+              data-percent="1.36"
+              data-min="2000000"
+              data-max="5000000"
+              data-duration="365"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card" id="9e010e02-1a5a-4084-9c32-1a4708cf">
+          <div class="card-header border-0 bg-white">
+            <div class="row">
+              <div class="col">
+                <h5>Ieo</h5>
+              </div>
+              <div class="col-auto">
+                2.38%
+                <span><b>every day</b></span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <b>Minimum Amount:</b>
+                <span class="float-right">&#xa3;217,000</span>
+              </li>
+              <li class="list-group-item">
+                <b>Money back guarantee:</b>
+                <span class="float-right"> 100%</span>
+              </li>
+              <li class="list-group-item">
+                <b>Duration:</b>
+                <span class="float-right">210 days</span>
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <input
+              type="radio"
+              name="select"
+              class="select-plan"
+              id="selectPlan"
+              style="height: 30px"
+              data-codex="9e010e02-1a5a-4084-9c32-1a4708cf"
+              data-percent="2.38"
+              data-min="217000"
+              data-max="10850000"
+              data-duration="210"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card" id="18f872b9-d044-43da-8e03-061af276">
+          <div class="card-header border-0 bg-white">
+            <div class="row">
+              <div class="col">
+                <h5>Erc 20</h5>
+              </div>
+              <div class="col-auto">
+                1.92%
+                <span><b>every day</b></span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <b>Minimum Amount:</b>
+                <span class="float-right">&#xa3;302,000</span>
+              </li>
+              <li class="list-group-item">
+                <b>Money back guarantee:</b>
+                <span class="float-right"> 100%</span>
+              </li>
+              <li class="list-group-item">
+                <b>Duration:</b>
+                <span class="float-right">365 days</span>
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <input
+              type="radio"
+              name="select"
+              class="select-plan"
+              id="selectPlan"
+              style="height: 30px"
+              data-codex="18f872b9-d044-43da-8e03-061af276"
+              data-percent="1.92"
+              data-min="302000"
+              data-max="1000000"
+              data-duration="365"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="deposit-system">
+      <h4 class="main-subtitle">
+        02. Enter the amount of Deposit:
+      </h4>
+      <form
+        method="post"
+        action="{% url 'deposits' %}"
+      >
+        {% csrf_token %}
+        <input
+          type="hidden"
+          name="_token"
+          value="0rRjJCfiIKc1qwlxGcqMT9XS6N4C4cCPK1zX2550"
+        />
+        <input type="hidden" id="plan" name="plan" readonly />
+
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label>Enter Amount</label>
+              <input
+                type="number"
+                autocomplete="off"
+                class="form-control form-control-lg input-bottom"
+                name="amount"
+                id="amount"
+                placeholder="0"
+                value=""
+                disabled
+                required
+              />
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label>Select Payment Source</label>
+              <select
+                name="source"
+                class="form-control form-control-lg input-bottom wide"
+                id="source"
+                required
+              >
+                <option value="">Select Payment Source</option>
+                <option value="balance">
+                  Account Balance -- &#xa3;0
+                </option>
+                <option value="crypto">e-currency</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="custom-button w-auto border-0">
+          Make Deposit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container-fluid sticky-bottom">
+  <div class="dashboard-footer">
+    <div
+      class="d-flex flex-wrap justify-content-between m-0-15-none"
+    >
+      <div class="left">
+        &copy; 2023
+        <a href="{% url 'home' %}">CoinTrack Advisors</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}
+
+{% block tradingView %}
+<script>
+  //select plan
+  const _selectPlan = document.querySelectorAll("#selectPlan");
+  _selectPlan.forEach((_button) => {
+    _button.addEventListener("click", () => {
+      document
+        .querySelectorAll(".deposit-inner")
+        .forEach((_list) => _list.classList.remove("active"));
+      document
+        .getElementById(_button.dataset.codex)
+        .classList.add("active");
+
+      const _amount = document.getElementById("amount");
+      _amount.removeAttribute("disabled");
+      _amount.setAttribute("min", _button.dataset.min);
+      _amount.setAttribute("max", _button.dataset.max);
+      _amount.setAttribute("data-percent", _button.dataset.percent);
+      _amount.setAttribute("data-duration", _button.dataset.duration);
+
+      document.querySelector("#plan").value = _button.dataset.codex;
+    });
+  });
+
+  const _amount = document.getElementById("amount");
+  _amount.addEventListener("keyup", () => {
+    if (
+      parseInt(_amount.value) >= parseInt(_amount.getAttribute("min")) &&
+      parseInt(_amount.value) <= parseInt(_amount.getAttribute("max"))
+    ) {
+      const _percent =
+        (_amount.dataset.percent / 100) * parseInt(_amount.value);
+      document.querySelector("#profit").innerHTML = new Intl.NumberFormat(
+        "en-US",
+        { maximumSignificantDigits: 3 }
+      ).format(
+        _percent * _amount.dataset.duration + parseInt(_amount.value)
+      );
+    }
+  });
+
+  const _source = document.querySelector("#source");
+  _source.addEventListener("change", () => {
+    if (_source.value === "crypto") {
+      document.querySelector("#method").classList.remove("d-none");
+    } else {
+      document.querySelector("#method").classList.add("d-none");
+    }
+  });
+</script>
+{% endblock %}

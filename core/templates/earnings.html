@@ -1,0 +1,165 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard-hero-content text-white">
+  <h3 class="title">My Earnings</h3>
+  <ul class="breadcrumb">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li>My Earnings</li>
+  </ul>
+  <div class="card card-body w-25 p-2">
+    <h6 class="col-green" style="margin-top: 1px">
+      <i class="fa fa-briefcase mr-2"></i> Normal Mode
+    </h6>
+  </div>
+</div>
+</div>
+<div class="container-fluid">
+<div class="mt--85">
+  <div class="row justify-content-center mt--85">
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Balance</span>
+            <h5 class="amount">{{ balance|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Total Deposits</span>
+            <h5 class="amount">{{ total_deposits|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Active Deposits</span>
+            <h5 class="amount">{{ active_deposits|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Total Withdrawals</span>
+            <h5 class="amount">{{ total_withdrawals|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dashboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3 d-none d-sm-block">
+    <iframe
+      scrolling="no"
+      allowtransparency="true"
+      style="
+        box-sizing: border-box;
+        height: calc(72px);
+        width: 100%;
+      "
+      src="https://s.tradingview.com/tickerswidgetembed/#%7B%22symbols%22%3A%5B%7B%22proName%22%3A%22INDEX%3ASPX%22%2C%22title%22%3A%22S%26P%20500%22%7D%2C%7B%22proName%22%3A%22INDEX%3AIUXX%22%2C%22title%22%3A%22Nasdaq%20100%22%7D%2C%7B%22proName%22%3A%22FX_IDC%3AEURGBP%22%2C%22title%22%3A%22EUR%2FGBP%22%7D%2C%7B%22proName%22%3A%22BITFINEX%3ABTCGBP%22%2C%22title%22%3A%22BTC%2FGBP%22%7D%2C%7B%22proName%22%3A%22BITFINEX%3AETHGBP%22%2C%22title%22%3A%22ETH%2FGBP%22%7D%5D%2C%22locale%22%3A%22en%22%2C%22width%22%3A%22100%25%22%2C%22height%22%3A104%2C%22utm_source%22%3A%22www.tradingview.com%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22tickers%22%7D"
+      frameborder="0"
+    ></iframe>
+  </div>
+
+  <div class="card card-primary">
+    <div class="card-body">
+      <h4>All Earnings</h4>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <tbody>
+            <tr>
+              <th>#</th>
+              <th>Investment Plan</th>
+              <th>Invested Amount</th>
+              <th>Earning Status</th>
+              <th>Date Invested</th>
+              <th>Earned Amount</th>
+              <th>Earning Date</th>
+            </tr>
+            {% for earning in earnings %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td> {{ earning.plan_name|upper }} </td>
+                <td>&#xa3; {{ earning.amount_invested|floatformat:"2g" }} </td>
+                {% if earning.status == "ACTIVE" %}
+                  <td><div class="badge badge-success"> {{ earning.status|lower }} </div></td>
+                {% elif earning.status == "PENDING" %}
+                  <td><div class="badge badge-warning"> {{ earning.status|lower }} </div></td>
+                {% elif earning.status == "ENDED" %}
+                  <td><div class="badge badge-secondary"> {{ earning.status|lower }} </div></td>
+                {% elif earning.status == "REJECTED" %}
+                  <td><div class="badge badge-danger"> {{ earning.status|lower }} </div></td>
+                {% elif earning.status == "FAILED" %}
+                  <td><div class="badge badge-danger"> {{ earning.status|lower }} </div></td>
+                {% endif %}
+                <td> {{ earning.date_created }} </td>
+                {% if earning.status == "ACTIVE" or earning.status == "ENDED" %}
+                  <td>&#xa3; {{ earning.earned_amount|floatformat:"2g"  }} </td>
+                {% else %}
+                  <td> </td>
+                {% endif %}
+                {% if earning.status == "ACTIVE" or earning.status == "ENDED" %}
+                <td> {{ earning.earned_date }} </td>
+                {% else %}
+                <td> </td>
+                {% endif %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid sticky-bottom">
+  <div class="dashboard-footer">
+    <div
+      class="d-flex flex-wrap justify-content-between m-0-15-none"
+    >
+      <div class="left">
+        &copy; 2023
+        <a href="https://www.gencapitals.com">CoinTrack Advisors</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,157 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="dashboard-hero-content text-white">
+  <h3 class="title">Manage Deposits</h3>
+  <ul class="breadcrumb">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li>Manage Deposits</li>
+  </ul>
+</div>
+</div>
+<div class="container-fluid">
+<div class="mt--85">
+  <div class="row justify-content-center mt--85">
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Balance</span>
+            <h5 class="amount"> {{ balance|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Total Deposits</span>
+            <h5 class="amount"> {{ deposits|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Active Deposits</span>
+            <h5 class="amount">{{ active_deposits|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/dashboard1.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <div class="dashboard-item">
+        <div class="dashboard-inner">
+          <div class="cont">
+            <span class="title">Ended Deposits</span>
+            <h5 class="amount">{{ ended_deposits|floatformat:"2g" }} GBP</h5>
+          </div>
+          <div class="thumb">
+            <img
+              src="{% static 'assets/images/dashboard/payment/check.png' %}"
+              alt="dasboard"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    {% for user_deposit in user_deposits %}
+    <div class="col-sm-4">
+      <div class="card shadow-lg">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h3>&#xa3;{{ user_deposit.amount_invested|floatformat:"-3g" }} <small>({{ user_deposit.per_cent }}%)</small></h3>
+              <div class="row mb-2">
+                <div class="col">
+                  {% if user_deposit.status == "PENDING" %}
+                    <span class="badge badge-warning">Pending</span>
+                  {% elif user_deposit.status == "ACTIVE" %}
+                    <span class="badge badge-success">Active</span>
+                  {% elif user_deposit.status == "ENDED" %}
+                    <span class="badge badge-dark">Ended</span>
+                  {% elif user_deposit.status == "REJECTED" %}
+                    <span class="badge badge-danger">Rejected</span>
+                  {% elif user_deposit.status == "FAILED" %}
+                    <span class="badge badge-danger">Failed</span>
+                  {% endif %}
+                  
+                </div>
+                <div class="col-auto"></div>
+              </div>
+            </div>
+            <div class="col-auto">
+              <p>
+                Plan:
+                <span class="text-uppercase col-bold">{{ user_deposit.plan_name|upper }}</span>
+              </p>
+              <a
+                href="{% url 'investment_detail' user_deposit.plan_id|concat_string:user_deposit.id %}"
+                class="btn btn-sm btn-secondary"
+                ><i class="fa fa-wallet mr-2"></i> View Details</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-auto">
+                  <i
+                    class="fa fa-calendar-day fa-2x col-light-blue"
+                  ></i>
+                </div>
+                <div class="col">
+                  <h6>Date Deposited</h6>
+                  {{ user_deposit.date_created|format_datetime }}
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="container-fluid sticky-bottom">
+  <div class="dashboard-footer">
+    <div
+      class="d-flex flex-wrap justify-content-between m-0-15-none"
+    >
+      <div class="left">
+        &copy; 2023
+        <a href="{% url 'home' %}">CoinTrack Advisors</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}
