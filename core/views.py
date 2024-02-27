@@ -8,13 +8,13 @@ from django.contrib.auth.decorators import login_required
 from core.country import countries
 from core.plans import DEPOSIT_PLANS
 from core.helpers import generate_invoice_number
-from coinbase_commerce import Client
+#from coinbase_commerce import Client
 from coinsend import settings
 
 import logging
 
-from coinbase_commerce.error import SignatureVerificationError, WebhookInvalidPayload
-from coinbase_commerce.webhook import Webhook
+#from coinbase_commerce.error import SignatureVerificationError, WebhookInvalidPayload
+#from coinbase_commerce.webhook import Webhook
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
