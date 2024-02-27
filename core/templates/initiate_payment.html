@@ -36,63 +36,240 @@
     <!-- Start Blog here -->
     <div id="back-blog" class="back-blog back-blog-page pt-120">
       <div class="container">
-        <h2>Initiate Crypto Transfer</h2>
-        <form
-          class="border rounded p-4"
-          method="POST"
-          action="{% url 'initiate_payment' %}"
-        >
-          {% csrf_token %}
-          <div class="form-group">
-            <label for="name">Your Name:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              placeholder="Enter Your name"
-              name="name"
-              required
-            />
+        <h2>Initiate Transfer</h2>
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs" id="transferTab" role="tablist">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              id="cash-to-crypto-tab"
+              data-toggle="tab"
+              href="#cashToCrypto"
+              role="tab"
+              aria-controls="cashToCrypto"
+              aria-selected="false"
+              >Cash to Crypto</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="crypto-to-cash-tab"
+              data-toggle="tab"
+              href="#cryptoToCash"
+              role="tab"
+              aria-controls="cryptoToCash"
+              aria-selected="true"
+              >Crypto to Cash</a
+            >
+          </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="transferTabContent">
+          <!-- Cash to Crypto Form -->
+          <div
+            class="tab-pane fade show active"
+            id="cashToCrypto"
+            role="tabpanel"
+            aria-labelledby="cash-to-crypto-tab"
+          >
+            <form class="border rounded p-4" method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Enter Your name"
+                  name="name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  placeholder="Enter Your email"
+                  name="email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="amount">Amount (USD):</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="amount"
+                  name="amount"
+                  placeholder="Enter amount in USD"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="accountNumber">Account Number:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="accountNumber"
+                  name="accountNumber"
+                  placeholder="Enter your account number"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="cryptoWallet"
+                  >Crypto Wallet Address: (This is where we will send the
+                  crypto)</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cryptoWallet"
+                  name="cryptoWallet"
+                  placeholder="Enter your crypto wallet address"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="cryptoType">Crypto Type:</label>
+                <select class="form-control" id="cryptoType" name="cryptoType">
+                  <option value="BTC">Bitcoin (BTC)</option>
+                  <option value="ETH">Ethereum (ETH)</option>
+                  <option value="LTC">Litecoin (LTC)</option>
+                  <!-- Add more options as needed -->
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea
+                  class="form-control"
+                  id="description"
+                  rows="3"
+                  name="description"
+                  placeholder="Enter a description (optional)"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Initiate Transfer
+              </button>
+            </form>
           </div>
-          <div class="form-group">
-            <label for="name">Your Email:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              placeholder="Enter Your email"
-              name="email"
-              required
-            />
+
+          <!-- Crypto to Cash Form -->
+          <div
+            class="tab-pane fade"
+            id="cryptoToCash"
+            role="tabpanel"
+            aria-labelledby="crypto-to-cash-tab"
+          >
+            <form class="border rounded p-4" method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="regionSelect">Select Recipient's Region:</label>
+                <select class="form-control" id="regionSelect">
+                  <option value="">Choose...</option>
+                  <option value="USA">United States</option>
+                  <option value="Europe">Europe</option>
+                  <option value="Asia">Asia</option>
+                  <option value="Africa">Africa</option>
+                  <option value="NorthAmerica">North America</option>
+                  <option value="SouthAmerica">South America</option>
+                </select>
+              </div>
+
+              <!-- Dynamic fields will be appended here -->
+              <div id="dynamicFields"></div>
+              <!-- Additional fields based on location will be dynamically inserted here -->
+              <button type="submit" class="btn btn-primary">
+                Initiate Transfer
+              </button>
+            </form>
           </div>
-          <div class="form-group">
-            <label for="amount">Amount (USD):</label>
-            <input
-              type="number"
-              class="form-control"
-              id="amount"
-              name="amount"
-              placeholder="Enter amount in USD"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="description">Description:</label>
-            <textarea
-              class="form-control"
-              id="description"
-              rows="3"
-              name="description"
-              placeholder="Enter a description (optional)"
-            ></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">
-            Initiate Transfer
-          </button>
-        </form>
+        </div>
       </div>
     </div>
+
     <!-- End Blog here -->
   </div>
 </div>
+{% endblock %} {% block scripts %}
+
+<script>
+  $(document).ready(function () {
+    $("#regionSelect").change(function () {
+      const region = $(this).val();
+      const dynamicFields = $("#dynamicFields");
+      dynamicFields.empty(); // Clear previous fields
+
+      // Define common fields
+      const commonFields = `
+              <div class="form-group">
+                  <label for="recipientName">Recipient's Name:</label>
+                  <input type="text" class="form-control" id="recipientName" name="recipientName" required>
+              </div>
+              <div class="form-group">
+                <label for="iban">Recipient's Address:</label>
+                <input type="text" class="form-control" id="iban" name="recipientAddress" required>
+              </div>
+              <div class="form-group">
+                <label for="iban">Purpose of Transfer:</label>
+                <input type="text" class="form-control" id="iban" name="purpose" required>
+              </div>
+              <div class="form-group">
+                  <label for="amount">Amount of the Transfer:</label>
+                  <input type="number" class="form-control" id="amount" name="amount" required>
+              </div>
+          `;
+
+      // Append common fields
+      dynamicFields.append(commonFields);
+
+      // Define region-specific fields
+      switch (region) {
+        case "USA":
+          dynamicFields.append(`
+                      <div class="form-group">
+                          <label for="accountNumber">Recipient's Account Number:</label>
+                          <input type="text" class="form-control" id="accountNumber" name="accountNumber">
+                      </div>
+                      <div class="form-group">
+                          <label for="bankName">Bank Name:</label>
+                          <input type="text" class="form-control" id="bankName" name="bankName">
+                      </div>
+                      <div class="form-group">
+                          <label for="routingNumber">Bank Routing Number (ABA):</label>
+                          <input type="text" class="form-control" id="routingNumber" name="routingNumber">
+                      </div>
+                      <div class="form-group">
+                        <label for="iban">IBAN:</label>
+                        <input type="text" class="form-control" id="iban" name="iban">
+                    </div>
+                    <div class="form-group">
+                        <label for="bic">BIC/SWIFT Code:</label>
+                        <input type="text" class="form-control" id="bic" name="bic">
+                    </div>
+                  `);
+          break;
+        case "Europe":
+          dynamicFields.append(`
+                      <div class="form-group">
+                          <label for="iban">IBAN:</label>
+                          <input type="text" class="form-control" id="iban" name="iban">
+                      </div>
+                      <div class="form-group">
+                          <label for="bic">BIC/SWIFT Code:</label>
+                          <input type="text" class="form-control" id="bic" name="bic">
+                      </div>
+                  `);
+          break;
+        // Add cases for other regions with respective fields
+      }
+    });
+  });
+</script>
+
 {% endblock %}

@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-c@w33fvaz9_myxd#b&z1k1a8@su^zmrj*65h-^u%iz9vyac%@q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['creditdev.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -133,3 +133,5 @@ STATICFILES_DIRS = ("static",)
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_URL = "user_login"
+
+COINBASE_COMMERCE_API_KEY = "3b4f973c-c340-4bba-9c65-1b23d4f7c9c7"
