@@ -12,6 +12,7 @@ dj-database-url==2.0.0
 Django==4.1.7
 django-anymail==10.0
 django-cors-headers==3.14.0
+django-environ==0.11.2
 djangorestframework==3.13.1
 gunicorn==21.2.0
 idna==3.4
@@ -26,6 +27,7 @@ psycopg2-binary==2.9.3
 pycodestyle==2.10.0
 pycparser==2.21
 pymongo==4.0.2
+pyotp==2.9.0
 python-dateutil==2.8.2
 python-dotenv==0.19.2
 pytz==2021.3
