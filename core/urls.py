@@ -32,4 +32,10 @@ urlpatterns = [
     path("cancel/", cancel_view, name="payments_cancel"),
     path("forgot_password/", forgot_password, name="forgot_password"),
     path("initiate_payment/", initiate_payment, name="initiate_payment"),
+    path("validate_email/", validate_email, name="validate_email"),
+    path("kyc/", kyc, name="kyc"),
+    path("transaction_start/", transaction_start, name="transaction_start"),
+    path("transaction_success/", transaction_success, name="transaction_success"),
+    path("complete_cash_to_crypto/", consumate_cash_to_crypto_payment, name="complete_cash_to_crypto_payment"),
+    path("complete_crypto_to_cash/", consumate_cryto_to_cash_payment, name="complete_crypto_to_cash_payment")
 ]

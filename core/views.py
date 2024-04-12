@@ -10,6 +10,8 @@ from core.plans import DEPOSIT_PLANS
 from core.helpers import generate_invoice_number
 #from coinbase_commerce import Client
 from coinsend import settings
+from django.http import JsonResponse
+import core.transaction_service as transaction_service
 
 import logging
 
@@ -539,3 +541,109 @@ def initiate_payment(request):
         return redirect(payment_url)
     else:
         return render(request, "initiate_payment.html", {})
+
+
+def kyc(request):
+    if request.method == 'POST':
+        email = request.session['xxx-email']
+        first_name = request.POST.get("first_name", '')
+        last_name = request.POST.get("last_name", '')
+        passport_number = request.POST.get('passport_number', '')
+        
+        user = User.objects.filter(email=email).first()
+        if not user:
+            # create the record of the user
+            user = User.objects.create(
+                first_name=first_name, 
+                last_name=last_name, 
+                email=email,
+                username=email
+            )
+
+            # create the record of the profile
+            profile = Profile.objects.create(
+                user=user, 
+                passport_number=passport_number
+            )
+
+        # send an OTP to the user email then redirect them
+        # to the transactions page 
+        transaction_service.send_otp_email(email=email)
+
+        # return the redirect to the transactions page
+        return redirect('transaction_start')
+    else:
+        print("in get method")
+        email = request.session['xxx-email']
+        
+        # if 'xxx-email' in request.session:
+        #     del request.session['xxx-email']
+
+        return render(request, 'kyc.html', {'email': email})
+
+
+def validate_email(request):
+    if request.method == 'POST':
+        email = request.POST.get('email', '')
+        if email:
+            # Check if the email exists in the User model
+            user_exists = User.objects.filter(email=email).exists()
+            request.session['xxx-email'] = email
+            if user_exists:
+                transaction_service.send_otp_email(email=email)
+                return redirect('transaction_start')
+            else:
+                return redirect('kyc')
+        else:
+            return HttpResponse('No email provided.', status=400)
+    else:
+        return redirect('initiate_payment')
+
+
+def transaction_start(request):
+    return render(request, "transaction_start.html")
+
+
+def transaction_success(request):
+    return render(request, "transaction_success.html")
+
+def consumate_cryto_to_cash_payment(request):
+    if 'xxx-email' not in request.session:
+        return redirect('initiate_payment')
+    email = request.session['xxx-email']
+    if request.method == 'POST':
+        try:
+            claim = transaction_service.consumate_crypto_to_cash(email, request.POST)
+            return redirect('transaction_success')
+        except Exception as e:
+            return render(request, 'complete_crypto_to_cash.html', context={
+                "issues": [str(e)],
+                "email": email
+            })
+
+    else:
+        return render(request, 'complete_crypto_to_cash.html', context={
+            'email': email,
+            'issues': []
+        })
+
+
+def consumate_cash_to_crypto_payment(request):
+    if 'xxx-email' not in request.session:
+        return redirect('initiate_payment')
+    email = request.session['xxx-email']
+    if request.method == 'POST':
+        try:
+            claim = transaction_service.consumate_cash_to_crypto(email, request.POST)
+            return redirect('transaction_success')
+        except Exception as e:
+            return render(request, 'complete_cash_to_crypto.html', context={
+                "issues": [str(e)],
+                "email": email
+            })
+
+    else:
+        return render(request, 'complete_cash_to_crypto.html', context={
+            'email': email,
+            'issues': []
+        })
