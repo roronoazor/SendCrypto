@@ -1,0 +1,171 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="back-wrapper">
+  <div class="back-wrapper-inner">
+    <!-- Back Breadcrumbs Start Here -->
+    <div class="back-breadcrumbs">
+      <div class="breadcrumbs-wrap">
+        <img
+          class="desktop"
+          height="450px"
+          src="{% static 'assets2/images/breadcrumbs/bitcoin-cash.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+
+        <img
+          class="mobile"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner-mobile.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <div class="breadcrumbs-inner">
+          <div class="container">
+            <div class="breadcrumbs-text">
+              <h1 class="breadcrumbs-title" style="color: #000">
+                Initiate Crypto Transfer
+              </h1>
+              <div class="back-nav">
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li>Crypto Transfer</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Back Breadcrumbs End Here -->
+    <div class="container mt-5">
+      {% if issues %}
+      <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">
+          <i class="flaticon-error"></i>
+          Transaction Unsuccessful
+        </h4>
+        <p class="ml-4">
+          Unfortunately, we encountered a problem while processing your
+          transaction. Please
+          <a href="{% url 'initiate_payment' %}">click here</a> to try again.
+        </p>
+        <hr />
+        <p class="ml-4 mb-0">Error Details:</p>
+        <ul>
+          {% for issue in issues %}
+          <p class="ml-4">{{ issue }}</p>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <h2>Confirmation Details</h2>
+      <p>Provide the details below to enable us send your crypto currency.</p>
+      <form
+        class="border rounded p-4"
+        method="POST"
+        action="{% url 'complete_cash_to_crypto_payment' %}"
+      >
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="email">Your Email:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            placeholder="Enter Your email"
+            name="email"
+            required
+            value="{{ email }}"
+            disabled
+          />
+        </div>
+        <div class="form-group">
+          <label for="otp_code">OTP Code:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="otp_code"
+            name="otp_code"
+            placeholder="Please enter the OTP Code sent to this email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="amount">Amount Sent</label>
+          <input
+            class="form-control"
+            id="amount"
+            name="amount"
+            placeholder="Enter amount sent"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="accountNumber">Account Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="accountName"
+            name="accountName"
+            placeholder="Enter the account name you sent money from"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="accountNumber">Account Number:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="accountNumber"
+            name="accountNumber"
+            placeholder="Enter the account number you sent money from"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="currency">Currency:</label>
+          <select class="form-control" id="currency" name="currency">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <!-- Add more currency options as needed -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cryptoWallet"
+            >Crypto Wallet Address: (This is where we will send the
+            crypto)</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="cryptoWallet"
+            name="cryptoWallet"
+            placeholder="Enter your crypto wallet address"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="cryptoType">Crypto Type:</label>
+          <select class="form-control" id="cryptoType" name="cryptoType">
+            <option value="BTC">Bitcoin (BTC)</option>
+            <option value="ETH">Ethereum (ETH)</option>
+            <option value="LTC">Litecoin (LTC)</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea
+            class="form-control"
+            id="description"
+            rows="3"
+            name="description"
+            placeholder="Enter a description or transaction ID (optional)"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Details</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block scripts %} {% endblock %}

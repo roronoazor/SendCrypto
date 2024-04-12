@@ -1,0 +1,241 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="back-wrapper">
+  <div class="back-wrapper-inner">
+    <!-- Back Breadcrumbs Start Here -->
+    <div class="back-breadcrumbs">
+      <div class="breadcrumbs-wrap">
+        <img
+          class="desktop"
+          height="450px"
+          src="{% static 'assets2/images/breadcrumbs/bitcoin-cash.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+
+        <img
+          class="mobile"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner-mobile.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <div class="breadcrumbs-inner">
+          <div class="container">
+            <div class="breadcrumbs-text">
+              <h1 class="breadcrumbs-title" style="color: #000">
+                Initiate Crypto Transfer
+              </h1>
+              <div class="back-nav">
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li>Crypto Transfer</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Back Breadcrumbs End Here -->
+    <div class="container mt-5">
+      {% if issues %}
+      <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">
+          <i class="flaticon-error"></i>
+          Transaction Unsuccessful
+        </h4>
+        <p class="ml-4">
+          Unfortunately, we encountered a problem while processing your
+          transaction. Please
+          <a href="{% url 'initiate_payment' %}">click here</a> to try again.
+        </p>
+        <hr />
+        <p class="ml-4 mb-0">Error Details:</p>
+        <ul>
+          {% for issue in issues %}
+          <p class="ml-4">{{ issue }}</p>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <h2>Confirmation Details</h2>
+      <p>Provide the details below to enable us send you cash.</p>
+      <form
+        class="border rounded p-4"
+        method="POST"
+        action="{% url 'complete_crypto_to_cash_payment' %}"
+      >
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            name="email"
+            value="{{ email }}"
+            disabled
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="otp_code">OTP Code:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="otp_code"
+            name="otp_code"
+            placeholder="Please enter the OTP Code sent to this email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="regionSelect">Select Your Region:</label>
+          <select class="form-control" id="regionSelect" name="region">
+            <option value="">Choose...</option>
+            <option value="USA">United States</option>
+            <option value="Europe">Europe</option>
+            <option value="Africa">Africa</option>
+            {% comment %}
+            <option value="Asia">Asia</option>
+            <option value="NorthAmerica">North America</option>
+            <option value="SouthAmerica">South America</option>
+            {% endcomment %}
+          </select>
+        </div>
+
+        <!-- Dynamic fields will be appended here -->
+        <div id="dynamicFields"></div>
+        <!-- Additional fields based on location will be dynamically inserted here -->
+        <button type="submit" class="btn btn-primary">Save Details</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+
+<script>
+  $(document).ready(function () {
+    $("#regionSelect").change(function () {
+      const region = $(this).val();
+      const dynamicFields = $("#dynamicFields");
+      dynamicFields.empty(); // Clear previous fields
+
+      // Define common fields
+      const commonFields = `
+                <div class="form-group">
+                  <label for="iban">Recipient's Address:</label>
+                  <input type="text" class="form-control" id="iban" name="recipientAddress" />
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount of Crytpo Sent:</label>
+                    <input type="input"  class="form-control" id="amount" name="amount" required />
+                </div>
+                <div class="form-group">
+                  <label for="cryptoType">Crypto Type:</label>
+                  <select class="form-control" id="cryptoType" name="cryptoType" required>
+                    <option value="BTC">Bitcoin (BTC)</option>
+                    <option value="ETH">Ethereum (ETH)</option>
+                    <option value="LTC">Litecoin (LTC)</option>
+                    <!-- Add more options as needed -->
+                  </select>
+                </div>
+            `;
+
+      // Append common fields
+      dynamicFields.append(commonFields);
+
+      // Define region-specific fields
+      switch (region) {
+        case "USA":
+          dynamicFields.append(`
+                        <div class="form-group">
+                            <label for="accountNumber">Account Number:</label>
+                            <input type="text" class="form-control" id="accountNumber" name="accountNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bankName">Bank Name:</label>
+                            <input type="text" class="form-control" id="bankName" name="bankName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="routingNumber">Bank Routing Number (ABA):</label>
+                            <input type="text" class="form-control" id="routingNumber" name="routingNumber" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="iban">IBAN:</label>
+                          <input type="text" class="form-control" id="iban" name="iban"> 
+                      </div>
+                      <div class="form-group">
+                          <label for="bic">BIC/SWIFT Code:</label>
+                          <input type="text" class="form-control" id="bic" name="bic" required>
+                      </div>
+                    `);
+          break;
+        case "Europe":
+          dynamicFields.append(`
+                        <div class="form-group">
+                            <label for="iban">IBAN:</label>
+                            <input type="text" class="form-control" id="iban" name="iban" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bic">BIC/SWIFT Code:</label>
+                            <input type="text" class="form-control" id="bic" name="bic" required>
+                        </div>
+                    `);
+          break;
+        case "Asia":
+          dynamicFields.append(`
+        <div class="form-group">
+            <label for="iban">IBAN:</label>
+            <input type="text" class="form-control" id="iban" name="iban">
+        </div>
+        <div class="form-group">
+            <label for="bic">BIC/SWIFT Code:</label>
+            <input type="text" class="form-control" id="bic" name="bic">
+        </div>
+    `);
+          break;
+        case "Africa":
+          dynamicFields.append(`
+                <div class="form-group">
+                    <label for="iban">Account Number:</label>
+                    <input type="text" class="form-control" id="accountNumber" name="accountNumber">
+                </div>
+                <div class="form-group">
+                    <label for="accountName">Account Name:</label>
+                    <input type="text" class="form-control" id="accountName" name="accountName">
+                </div>
+                <div class="form-group">
+                  <label for="bic">Bank:</label>
+                  <input type="text" class="form-control" id="bank" name="bank">
+              </div>
+                `);
+          break;
+        case "NorthAmerica":
+          dynamicFields.append(`
+            <div class="form-group">
+                <label for="iban">IBAN:</label>
+                <input type="text" class="form-control" id="iban" name="iban">
+            </div>
+            <div class="form-group">
+                <label for="bic">BIC/SWIFT Code:</label>
+                <input type="text" class="form-control" id="bic" name="bic">
+            </div>
+            `);
+          break;
+        case "SouthAmerica":
+          dynamicFields.append(`
+            <div class="form-group">
+                <label for="iban">IBAN:</label>
+                <input type="text" class="form-control" id="iban" name="iban">
+            </div>
+            <div class="form-group">
+                <label for="bic">BIC/SWIFT Code:</label>
+                <input type="text" class="form-control" id="bic" name="bic">
+            </div>
+            `);
+          break;
+      }
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="back-wrapper">
+  <div class="back-wrapper-inner">
+    <!-- Back Breadcrumbs End Here -->
+    <div class="text-center">
+      <div class="card p-5">
+        <div
+          style="
+            border-radius: 200px;
+            height: 200px;
+            width: 200px;
+            background: #f8faf5;
+            margin: 0 auto;
+          "
+        >
+          <i
+            class="checkmark"
+            style="
+              color: #9abc66;
+              font-size: 100px;
+              line-height: 200px;
+              margin-left: -15px;
+            "
+            >✓</i
+          >
+        </div>
+        <h1>Success</h1>
+        <p>
+          Your transaction request has been received.<br />
+          We will contact you soon!
+          <a href="{%  url 'home' %}">Return to the Home page</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block scripts %}{% endblock %}

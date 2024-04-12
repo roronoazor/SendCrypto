@@ -1,0 +1,160 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="back-wrapper">
+  <div class="back-wrapper-inner">
+    <!-- Back Breadcrumbs Start Here -->
+    <div class="back-breadcrumbs">
+      <div class="breadcrumbs-wrap">
+        <img
+          class="desktop"
+          height="450px"
+          src="{% static 'assets2/images/breadcrumbs/bitcoin-cash.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <img
+          class="mobile"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner-mobile.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <div class="breadcrumbs-inner">
+          <div class="container">
+            <div class="breadcrumbs-text">
+              <h1 class="breadcrumbs-title" style="color: #000">
+                Initiate Crypto Transfer
+              </h1>
+              <div class="back-nav">
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li>Crypto Transfer</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Back Breadcrumbs End Here -->
+    <div class="container mt-5">
+      <div class="alert alert-info shadow-sm" role="alert">
+        <h4 class="alert-heading">
+          <i class="flaticon-code"></i>
+          Important Information!
+        </h4>
+        <p class="ml-4">
+          An OTP code has been sent to your email. This OTP code is valid for 10
+          minutes. You will need this OTP code in the next step.
+        </p>
+        <hr />
+        <p class="mb-0 ml-4">To proceed:</p>
+        <ul class="ml-4">
+          <li>
+            If you wish to send crypto to receive cash, click on the
+            <strong>Crypto Wallets</strong> tab, copy the wallet address to your
+            crypto app, and send the crypto. Once completed, click on the "I
+            have made this transaction" button.
+          </li>
+          <li>
+            To send cash and receive crypto, click on the
+            <strong>Bank Accounts</strong> tab, make the transfer to the
+            respective account, and click on the "I have made this bank
+            transfer" button.
+          </li>
+        </ul>
+      </div>
+      <div class="mb-4">
+        <ul class="nav nav-tabs" id="paymentTab" role="tablist">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              id="crypto-tab"
+              data-toggle="tab"
+              href="#crypto"
+              role="tab"
+              aria-controls="crypto"
+              aria-selected="true"
+              >Crypto Wallets</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="bank-tab"
+              data-toggle="tab"
+              href="#bank"
+              role="tab"
+              aria-controls="bank"
+              aria-selected="false"
+              >Bank Accounts</a
+            >
+          </li>
+        </ul>
+        <div class="tab-content p-3" id="paymentTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="crypto"
+            role="tabpanel"
+            aria-labelledby="crypto-tab"
+          >
+            <!-- Content for Crypto Wallets -->
+            <div class="mt-3">
+              <h4>Ethereum (ETH)</h4>
+              <p>Wallet Address: 0x123...abc</p>
+              <h4>Bitcoin (BTC)</h4>
+              <p>Wallet Address: 1A1zP1...Jhg28</p>
+              <h4>Tether (USDT)</h4>
+              <p>Wallet Address: 0x987...xyz</p>
+              <!-- Add more as needed -->
+              <a
+                href="{% url 'complete_crypto_to_cash_payment' %}"
+                class="btn btn-primary my-3"
+                >I have made this crypto transaction</a
+              >
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="bank"
+            role="tabpanel"
+            aria-labelledby="bank-tab"
+          >
+            <!-- Content for Bank Accounts -->
+            <div class="table-responsive mt-3">
+              <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Bank</th>
+                    <th scope="col">Account Number</th>
+                    <th scope="col">Currency</th>
+                    <th scope="col">SWIFT/BIC</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Bank of Example</td>
+                    <td>123456789</td>
+                    <td>USD</td>
+                    <td>BOFEXXXX</td>
+                  </tr>
+                  <tr>
+                    <td>Example International Bank</td>
+                    <td>987654321</td>
+                    <td>EUR</td>
+                    <td>EIBKXXXX</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- Add more rows as needed -->
+              <a
+                href="{% url 'complete_cash_to_crypto_payment' %}"
+                class="btn btn-primary my-3"
+                >I have made this bank transfer</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block scripts %}{% endblock %}

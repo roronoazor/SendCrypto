@@ -1,0 +1,102 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="back-wrapper">
+  <div class="back-wrapper-inner">
+    <!-- Back Breadcrumbs Start Here -->
+    <div class="back-breadcrumbs">
+      <div class="breadcrumbs-wrap">
+        <img
+          class="desktop"
+          height="450px"
+          src="{% static 'assets2/images/breadcrumbs/bitcoin-cash.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+
+        <img
+          class="mobile"
+          src="{% static 'assets2/images/breadcrumbs/banner-inner-mobile.jpg' %}"
+          alt="Breadcrumbs Image"
+        />
+        <div class="breadcrumbs-inner">
+          <div class="container">
+            <div class="breadcrumbs-text">
+              <h1 class="breadcrumbs-title" style="color: #000">
+                Know Your Customer (KYC)
+              </h1>
+              <div class="back-nav">
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li>Crypto Transfer</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Back Breadcrumbs End Here -->
+    <div class="container mt-5">
+      <h2>Know your customer</h2>
+      <p>
+        Welcome! It looks like this is the first time you're using this email
+        with us. In accordance with our KYC policy, we kindly ask you to provide
+        the following information to proceed with your transaction. Thank you
+        for your cooperation!
+      </p>
+      <form id="cryptoForm m-2" method="POST" action="{% url 'kyc' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="emailInput">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="emailInput"
+            required
+            name="email"
+            value="{{ email }}"
+            disabled
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
+          <div id="kycFields">
+            <div class="form-group">
+              <label for="passportInput">Passport Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="passportInput"
+                required
+                name="passport_number"
+                placeholder="Passport Number"
+              />
+            </div>
+            <div class="form-group">
+              <label for="nameInput">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nameInput"
+                required
+                name="first_name"
+                placeholder="First Name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="nameInput">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nameInput"
+                required
+                name="last_name"
+                placeholder="Last Name"
+              />
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary m-2">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block scripts %} {% endblock %}
